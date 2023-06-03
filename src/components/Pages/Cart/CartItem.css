@@ -1,0 +1,171 @@
+.cartItemCard{
+    display: flex;
+    min-height: 20rem;
+    position: relative;
+    box-shadow: 0 1rem 1rem rgba(0,0,0,0.5);   
+    width: 60vw; 
+}
+
+@media only screen and (max-width: 1050px) {
+    .cartItemCard{
+        padding-bottom: 2rem;
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .cartItemCard{
+        width: 100%;
+        box-shadow: none;
+    }
+}
+
+.cartItemCard:not(:last-child){
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #999;
+}
+
+.cartItemInfo{
+    display: flex;
+    justify-content: flex-start;
+    flex: 3;
+    min-width: 0;
+}
+
+@media only screen and (max-width: 1350px){
+    .cartItemInfo{
+        flex: 2;
+    }
+}
+
+@media only screen and (max-width: 768px){
+    .cartCatName{
+        display: none;
+    }
+}
+
+.cartItemRight{
+    flex: 2;
+    display: flex;
+}
+
+@media only screen and (max-width: 768px){
+    .cartItemRight{
+        flex-direction: column;
+        
+    }
+}
+
+.cartItemImg{
+    height: 20rem;
+    display: block;
+}
+
+.cartItemDetail{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-left: 3rem;
+    padding: 3rem 0;
+    flex: 2;
+}
+
+@media only screen and (max-width: 768px){
+    .cartItemDetail{
+        padding: 0;
+        padding-top: 4rem;
+        margin-left: 0;
+        text-align: center;
+    }
+}
+
+.cartItemDetail > *{
+    text-transform: capitalize;
+}
+
+.cartItemTitle{
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.changeQty{
+    font-size: 2rem;
+}
+
+.cartItemQty{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+@media only screen and (max-width: 768px){
+    .cartItemQty{
+        gap: 0;
+        padding: 0 2rem;
+    }
+}
+
+.changeQtyBtn{
+    padding: 1rem;
+    margin: 1rem;
+    border: none;
+    background-color: transparent;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 768px){
+    .changeQtyBtn{
+        margin: 0;
+    }
+}
+
+.changeQtyBtn:hover{
+    background-color: #ddd;
+    transition: all 0.3s;
+}
+
+.changeQtyBtn:active{
+    background-color: #333;
+}
+
+.cartAmount{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+}
+
+.cartWishlistBtn{
+    padding: 3px;
+    background-color: transparent;
+    border: 2px solid #B28451;
+    color: #B28451;
+    cursor: pointer;
+    width: 80%;
+    margin-bottom: 5px;
+}
+
+@media only screen and (max-width: 400px){
+    .cartWishlistBtn{
+        width: 100%;
+    }
+}
+
+
+.cartRemove{
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    height: 1.5rem;
+}
+
+.checkoutCard{
+    display: flex;
+}
+

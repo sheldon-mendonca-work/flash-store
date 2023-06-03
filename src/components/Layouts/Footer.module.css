@@ -1,0 +1,59 @@
+.footer{
+    display: flex;
+    width: 100%;
+    background-color: #101d2c;
+    color: #fff;
+    font-size: 1.5rem;
+    padding: 4rem 4rem 2rem 4rem;
+    justify-content: space-between;
+    min-height: 10rem;
+}
+
+.footerContact{
+    position: absolute;
+    transform: translateY(-50%);
+    
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 3px;
+}
+
+.footerContact::before, .footerContact::after{
+    content: "";
+    height: 1px;
+    background-color: #777;
+    width: 100%;
+}
+
+.footerLinks{
+    list-style: none;
+    flex: 0 0 40%;
+    position: relative;
+}
+
+.footerLinks li, .footerLinks li:visited, .footerLinks li:active{
+    display: inline-block;
+    padding: 2rem 3rem;
+    text-transform: uppercase;
+    align-self: stretch;
+    transition: all 0.3s;
+}
+
+.footerLinks li:hover{
+    background-color: rgba(255, 255, 255, 0.05);
+    transform: translateY(-3px);
+}
+
+.footerNavIcon{
+    height: 3rem;
+    fill: #fff;
+}
+
+.footerCopyright{
+    flex: 0 0 40%;
+    border-top: 1px solid #777;
+    padding: 2rem 3rem;
+}

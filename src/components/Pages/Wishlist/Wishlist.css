@@ -1,0 +1,25 @@
+.wishlistPage{
+    padding: 5rem 8rem;
+    font-size: 1.5rem;
+    width: 100%;
+    flex: 1;
+}
+
+@media only screen and (max-width: 900px) {
+    .wishlistPage{
+        padding: 3rem 6rem;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .wishlistPage{
+        padding: 1rem 2.5rem;
+    }
+}
+
+
+@media only screen and (max-width: 450px) {
+    .wishlistPage{
+        padding: 1rem 0.5rem;
+    }
+}

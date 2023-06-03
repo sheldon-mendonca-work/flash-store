@@ -1,0 +1,185 @@
+.homeMain{
+    background-image: linear-gradient(rgba(16, 29, 44, 0.58), rgba(16, 29, 44, 0.58)), url("./images/janko-ferlic-sfL_QOnmy00-unsplash.jpg");
+    min-height: 90vh;
+    background-size: cover;
+    position: relative;
+    flex: 1;
+    width: 100%;
+}
+
+.homeIntro{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    
+}
+
+.homeIntroMain{
+    font-size: 7rem;
+    text-transform: uppercase;
+    letter-spacing: 5rem;
+    display: inline-block;
+    margin-right: -5rem;
+}
+    
+@media only screen and (max-width: 600px) {
+    .homeIntroMain{
+        letter-spacing: 2rem;
+        margin-right: -2rem;
+    }
+}
+
+
+.homeIntroSub{
+    font-size: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.8rem;
+    display: inline-block;
+    font-weight: bold;
+    width: 80vw;
+}
+
+@media only screen and (max-width: 600px) {
+    .homeIntroSub{
+        font-size: 2rem;
+    }
+  }
+
+.homeDetails{
+    display: flex;
+    min-height: 90vh;
+    justify-content: space-between;
+    flex: 1;
+    width: 100%;
+}
+
+@media only screen and (max-width: 768px) {
+    .homeDetails{
+        flex-direction: column; 
+    }
+}
+
+.productDetailsLeft{
+    background-image: linear-gradient(rgba(16, 29, 44, 0.5), rgba(16, 29, 44, 0.5)),url("./images/emil-widlund-xrbbXIXAWY0-unsplash.jpg");
+    background-size: cover;
+    flex: 0 0 50%;
+    margin: 2rem 1rem 2rem 2rem;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media only screen and (max-width: 768px) {
+    .productDetailsLeft{
+        margin: 2rem 2rem 1rem 2rem;
+        flex: 1;
+        background-position: center;
+    }
+}
+
+.productDetailsRight{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+    overflow: hidden;
+}
+
+.detailBox{
+    background-color: rgba(255, 255, 255, 0.4);
+    display: flex;
+    width: 50%;
+    padding: 2rem;
+    left: 0;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+@media only screen and (max-width: 1024px) {
+    .detailBox{
+        width: auto;
+    }
+}
+
+.detailBox > *{
+    margin: 1rem;
+}
+
+
+.wishlistCard{
+    background-image: linear-gradient(rgba(16, 29, 44, 0.2), rgba(16, 29, 44, 0.2)),url("./images/jaredd-craig-HH4WBGNyltc-unsplash.jpg");
+    background-size: cover;
+    background-position: 20% 30%;
+    flex: 0 0 50%;
+    margin: 2rem 2rem 1rem 1rem;
+    padding: 2rem;
+}
+
+@media only screen and (max-width: 768px) {
+    .wishlistCard{
+        margin: 1rem 2rem 1rem 2rem; 
+        flex: 1;
+    }
+}
+
+.userLoginCard{
+    background-image: linear-gradient(rgba(16, 29, 44, 0.2), rgba(16, 29, 44, 0.2)),url("./images/thought-catalog-OJZB0VUQKKc-unsplash.jpg");
+    background-size: cover;
+    background-position: 50% 60%;
+    flex: 1;
+    margin: 1rem 2rem 2rem 1rem ;
+    padding: 2rem;
+}
+
+@media only screen and (max-width: 768px) {
+    .userLoginCard{
+        margin: 1rem 2rem 2rem 2rem; 
+        flex: 1;
+    }
+}
+
+.productDetailsTitle{
+    color: #000;
+    font-size: 2rem;
+    width: 100%;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+@media only screen and (max-width: 1024px) {
+    .productDetailsTitle{
+        width: auto;
+    }
+}
+
+.productDetailDesc{
+    color: #000;
+    font-size: 2rem;
+    width: 100%;
+}
+
+.productDetailButton{
+    font-size: 1.5rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    
+    border: none;
+    background-color: #101d2c;
+    font-size: 2rem;
+    color: #fff;
+    cursor: pointer;
+    padding: 1.8rem 3rem;
+    letter-spacing: 0.1rem;
+    transition: all 0.3s;
+    overflow: hidden;
+    position: relative;
+}
+
+@media only screen and (max-width: 1024px) {
+    .productDetailButton{
+        letter-spacing: 0;
+    }
+}

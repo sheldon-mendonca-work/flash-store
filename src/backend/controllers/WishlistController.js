@@ -52,6 +52,7 @@ export const addItemToWishlistHandler = function (schema, request) {
       createdAt: formatDate(),
       updatedAt: formatDate(),
     });
+    console.log(userWishlist);
     this.db.users.update({ _id: userId }, { wishlist: userWishlist });
     return new Response(201, {}, { wishlist: userWishlist });
   } catch (error) {

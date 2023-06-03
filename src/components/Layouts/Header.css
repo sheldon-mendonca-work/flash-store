@@ -1,0 +1,179 @@
+.header{
+    min-height: 10rem;
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: 0 auto;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10vw;
+    position: sticky;
+    top: 0;
+    z-index: 4;
+    flex-wrap: wrap;
+    background-color: #fff;
+    box-shadow: 0 0.5rem 0.4rem -0.4rem rgba(0,0,0,0.4);
+
+}
+
+@media only screen and (max-width: 1024px) {
+    .header{
+        padding: 0 3rem;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .header{
+        padding-top: 1rem;
+    }
+}
+
+
+@media only screen and (max-width: 500px) {
+    .header{
+        padding: 0;
+        margin-top: 0rem;
+        top: 0;
+    }
+}
+
+.flash{
+    display: flex;
+    align-items: center;
+    align-self: stretch;
+    font-size: 2rem;
+    padding: 0 1.5rem;
+    text-decoration: none;
+    color: rgb(16, 29, 44);
+}
+
+@media only screen and (max-width: 768px) {
+    .flash{
+        flex: 1;
+    }
+}
+
+.flash:hover {
+    background-color: rgb(16, 29, 44);
+}
+
+.flash:hover .flashText, .flash:hover .flashIcon{
+    fill:#faf9f9;
+    color: #faf9f9;
+}
+
+@media only screen and (max-width: 768px) {
+    .flashHeading1{
+        padding-left: 4rem;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .flashHeading1{
+        padding-left: 1rem;
+        flex: 1;
+    }
+}
+
+.flashIcon{
+    height: 3.2rem;
+    fill: rgb(16, 29, 44);
+}
+
+@media only screen and (max-width: 500px) {
+    .flashIcon{
+        height: 3rem;
+    }
+}
+
+
+@media only screen and (max-width: 600px) {
+    .flashText{
+        display: none;
+    }
+}
+
+.headerNav{
+    display: flex;
+    align-items: center;
+    align-self: stretch;
+    
+}
+
+@media only screen and (max-width: 768px) {
+    .headerNav{
+        padding-right: 4rem;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .headerNav{
+        padding-right: 0rem;
+        flex: 0 0 100%;
+        justify-content: space-evenly;
+    }
+}
+
+.headerNav > * {
+    padding: 0 1.5rem;
+    cursor: pointer;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.headerNavIcons{
+    height: 2.5rem;
+    fill: rgb(16, 29, 44);
+    position: relative;
+}
+
+.headerNav > a:hover{
+    background-color: rgb(16, 29, 44);
+}
+
+.headerNav > a:hover svg{
+    fill:#faf9f9;
+    background-color: rgb(16, 29, 44);
+}
+
+.headerNav > *:active{
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+.headerNavUser > *{  
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.headerNavName{
+    padding-right: 1.5rem;
+    font-size: 2rem;
+    text-decoration: none;
+}
+
+.headerNavQty{
+    position: relative;
+}
+
+.headerQtyIcon{
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3rem;
+    font-weight: bold;
+    border-radius: 50%;
+    align-self: start;
+    background-color: rgb(16, 29, 44);
+    color: #fff;
+    position: absolute;
+    top: -70%;
+    right: -70%;
+}
+

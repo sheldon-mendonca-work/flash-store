@@ -1,0 +1,42 @@
+import { Navigate, Route, Routes } from "react-router-dom";
+import HomePage from "../Pages/HomePage/HomePage";
+import ProductList from "../Pages/ProductList/ProductList";
+import Cart from "../Pages/Cart/Cart";
+import Wishlist from "../Pages/Wishlist/Wishlist";
+import UserProfile from "../Pages/UserProfile/UserProfile";
+import SignUp from "../Pages/SignUp/SignUp";
+import Mockman from "mockman-js";
+import RequiresAuth from "./RequiresAuth";
+import Login from "../Pages/Login/Login";
+import PageNotFound from "../Pages/PageNotFound/PageNotFound";
+import AddAddress from "../Pages/SignUp/AddAddress";
+import { useContext } from "react";
+import { AuthContext } from "../Contexts/AuthContexts";
+import ProductLandscape from "../Pages/ProductList/ProductLandscape";
+import Checkout from "../Pages/Cart/Checkout";
+
+
+const AllRoutes = () => {
+
+    const {validateCreateUser} = useContext(AuthContext);
+
+    return <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/products" element={<ProductList />} />
+        <Route path="/product/:productId" element={<ProductLandscape />} />
+        <Route path="/product/*" element={<PageNotFound />} />
+        <Route path="/cart" element={<RequiresAuth><Cart /></RequiresAuth>} />
+        <Route path="/wishlist" element={<RequiresAuth><Wishlist /></RequiresAuth>} />
+        <Route path="/userProfile" element={<RequiresAuth><UserProfile /></RequiresAuth>} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/checkout" element={<RequiresAuth><Checkout /></RequiresAuth>} />
+        <Route path="/signUpAddress" 
+            element={validateCreateUser ? <AddAddress /> : <Navigate to="/signup" />} />
+        
+        <Route path="/mockman" element={<Mockman />} />
+        <Route path="*" element={<PageNotFound />} />
+    </Routes>
+}
+
+export default AllRoutes;

@@ -1,0 +1,181 @@
+.filterPane{
+    flex: 0 0 20%;
+    padding: 3rem 3rem;  
+    border-right: 1px solid #edebef9d;
+    display: flex;
+    flex-direction: column;
+}
+
+
+@media only screen and (max-width: 900px) {
+    .filterPane{
+        padding: 3rem 1.5rem; 
+        flex: 0 0 30%; 
+    }
+}
+
+@media only screen and (max-width: 768px) {
+   .filterPane{ 
+        position: fixed;
+        z-index: 4;
+        background-color: #fff;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        padding: 2rem 1.5rem;
+   } 
+}
+
+@media only screen and (max-width: 768px) { 
+    .filterPane * {
+        z-index: 4;    
+    }
+}
+
+.filterBackdrop{
+    display: none;
+}
+
+@media only screen and (max-width: 768px) { 
+    .filterBackdrop{
+        display: none;
+        position: fixed;
+        background-color: transparent;
+        height: 100vh;
+        width: 100vw;
+        z-index: 2;
+        bottom: 50vh;
+        left: 0;
+    }
+}
+
+.filterButtonLower{
+    display: none;
+}
+
+@media only screen and (max-width: 768px){
+    .filterButtonLower{
+        position: fixed;
+        display: flex;
+        justify-content: space-between;
+        gap: 0;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+    }
+}
+
+.filterButtonLower > button{
+    background-color: #101d2c;
+    margin: 0;
+}
+
+.filterSet{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+
+
+@media only screen and (max-width: 768px){
+    .filterCriteriaActive{
+        display: none;
+    }
+
+    .filterSortActive{
+        display: none;
+    }
+}
+
+.filterTitle{
+    font-size: 2rem;
+    color: #777;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.filterClear{
+    cursor: pointer;
+    border: none;
+    text-transform: uppercase;
+    color: #B28451;
+    font-weight: bold;
+}
+
+.filterContainer{
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+    font-size: 1.3rem;
+}
+
+@media only screen and (max-width: 768px) { 
+    .filterContainer{
+        align-items: center;
+    }
+}
+
+.filterContainer > ul{
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.filterContainer > ul > li{
+    flex: 0 0 100%;
+    text-align: left;
+    padding: 1rem 0.5rem;
+    text-transform: capitalize;
+    display: flex;
+    align-items: center;
+}
+
+
+
+.filterContainer > ul > li > label{
+    color: #282c3f;
+    padding: 0.5rem
+}
+
+.filterLabel{
+    text-transform: uppercase;
+    display: block;
+    font-size: 1.5rem;
+    text-align: left;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    color: #777;
+}
+
+@media only screen and (max-width: 768px) { 
+    .filterLabel{
+        min-width: 15rem;
+    }
+}
+
+.filterSliderInput{
+    width: 100%;
+}
+
+.filterSlider{
+    padding: 1rem;  
+}
+
+@media only screen and (max-width: 768px) { 
+    .filterSlider{
+        flex: 1;
+    }
+}
+
+.filterSliderTags{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+.filterRadio{
+    justify-content: flex-start;
+}

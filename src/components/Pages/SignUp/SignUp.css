@@ -1,0 +1,142 @@
+.formContainer{
+    min-width: 70vw;
+    margin: auto;
+    padding: 3rem 5rem;
+    font-size: 1.5rem;
+    text-align: left;
+    background-size: cover;
+    display: flex;
+    gap: 2rem;
+}
+
+@media only screen and (max-width: 1024px) {
+    .formContainer{
+        width: 100%;
+        padding: 3rem;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .formContainer{
+        flex-direction: column;
+    }
+}
+
+.formContainerLeft{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+@media only screen and (max-width: 768px) {
+    .formContainerLeft{
+        width: 100%;
+    }
+}
+
+
+.formContainerRight{
+    flex: 1;
+    margin: auto 0;
+    align-items: center;
+}
+
+.formHeading2{
+    margin-bottom: 1rem;
+    font-size: 4rem;
+}
+
+.formSubText{
+    font-size: 2rem;
+}
+
+.formGroupInput{
+    font-size: 1.5rem;
+    font-family: inherit;
+    color: inherit;
+    padding: 1.5rem 2rem;
+    border-radius: 2px;
+    background-color: rbga(#fff, .5);
+    border: none;
+    border-bottom: 3px solid transparent;
+    width: 100%;
+    display: block;
+    transition: all .3s;
+    margin-bottom: 0.5rem;
+    border-bottom: 3px solid #777;
+}
+
+.formGroupInput:focus {
+    outline: none;
+    box-shadow: 0 1rem 2rem rgba(#000, .1);
+    border-bottom: 3px solid orangered;
+}
+
+.formGroupLabel{
+    padding-left: 2rem;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    display: block;
+    color: #000;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.formGroupInput:placeholder-shown + .formGroupLabel {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-4rem);
+}
+
+.termsCheck{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.3rem;
+    padding: 0 2rem 1rem 2rem;
+    flex-wrap: wrap;
+    
+}
+
+.testUserLinks{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 0.5rem;
+}
+
+.formContainer button{
+    background-color: #B28451;
+}
+
+.acceptConditionsLabel{
+    margin-left: 0.5rem;
+    color: #000;
+}
+
+.acceptConditionsLink{
+    color: #B28451;
+}
+
+.noAccount{
+    margin: 2rem 0;
+}
+
+.formGroupRadio{
+    padding: 0 2rem;
+}
+
+.formRadioList{
+    display: flex;
+    margin: 1rem 0;
+}
+
+.formRadio{
+    flex: 1;
+    text-align: center;
+}
+
+.formRadio>*{
+    padding: 0 1rem;
+}

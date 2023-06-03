@@ -1,3 +1,4 @@
-## E-Commerce Backend
+## Flash Store
 
-This folder contains the Mock Backend created for E-Commerce App. It contains different API end-points and database configuration for building E-Commerce; so that you can focus on building Frontend.
+Welcome to Flash store, and e-commerce app for all your book needs.
+The app works on mobile and desktop devices.
