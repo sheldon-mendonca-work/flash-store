@@ -8,6 +8,9 @@
 # testing
 /coverage
 
+#newBackend
+/src/newBackend
+
 # production
 /build
 

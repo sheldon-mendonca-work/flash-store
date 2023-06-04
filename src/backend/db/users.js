@@ -5,10 +5,7 @@ import { formatDate } from "../utils/authUtils";
  * You can add default users of your wish with different attributes
  * Every user will have cart (Quantity of all Products in Cart is set to 1 by default), wishList by default
  * */
-
-export const users = [
-  
-  {
+const defaultUser = {
     _id: "82c07e0f-e309-4e37-b84b-ea584ae5a7fe",
     email: "testUser@123.com",
     password: "221068207e125b97beb4e2d062e888b1", //userPassword
@@ -87,6 +84,9 @@ export const users = [
     wishlist: [],
     createdAt: formatDate(),
     updatedAt: formatDate(),
-    }
-];
+    };
+    
+export const users = [
+  {...defaultUser},
 
+];
