@@ -13,14 +13,14 @@ export const WishlistProvider = ({children}) => {
     const navigate = useNavigate();
 
     const addToWishlistHandler = async (item) => {
-
-        if(localStorage.getItem("flashToken") === undefined){
+        
+        if(localStorage.getItem("flashToken") === null){
             navigate('/login');
+            navigate(0);
             return;
         }
 
         setIsLoading(true);
-
         try {
             const response = await fetch("/api/user/wishlist", {
                 method: "POST",
@@ -39,13 +39,17 @@ export const WishlistProvider = ({children}) => {
         }finally{
             setIsLoading(false);
         }
-        
     }
 
     const removeWishlistHandler = async (item) => {
 
+        if(localStorage.getItem("flashToken") === null){
+            navigate('/login');
+            navigate(0);
+            return;
+        }
+        
         setIsLoading(true);
-
         try {
             const response = await fetch(`/api/user/wishlist/${item._id}`,{
                 method: "DELETE",
@@ -65,12 +69,9 @@ export const WishlistProvider = ({children}) => {
         }
     }
     
-    
-
     const getWishlist = async () => {
 
         setIsLoading(true);
-
         try{
             const response = await fetch("/api/user/wishlist",{
                 method: "GET",

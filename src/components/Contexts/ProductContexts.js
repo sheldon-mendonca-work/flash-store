@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import { ErrorContext } from "./ErrorContexts";
 
 export const ProductContext = createContext();
@@ -22,7 +22,6 @@ export const ProductProvider = ({children}) => {
     const getProductList = async() => {
         
         setIsLoading(true);
-        
         try{
             const productResponse = await fetch("/api/products",{
                 method: "GET"
@@ -50,7 +49,6 @@ export const ProductProvider = ({children}) => {
                 initialFilters = {...initialFilters, ...categories};
 
                 setFilterCriteria(initialFilters);
-                
             }
         }catch(error){
             showNotif(`Error`, `${error.status}: Error in fetching cart.`);
@@ -59,13 +57,8 @@ export const ProductProvider = ({children}) => {
         }
     }
 
-    useEffect(()=>{
-        getProductList(); // eslint-disable-next-line
-    },[]);
-
-    
-
-    return <ProductContext.Provider value={{productList, filterCriteria, setFilterCriteria, categoryArray, initialFilters}}>
+    return <ProductContext.Provider value={{productList, filterCriteria, setFilterCriteria, categoryArray, initialFilters, getProductList}}>
         {children}
     </ProductContext.Provider>
 }
+

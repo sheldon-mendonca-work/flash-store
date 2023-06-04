@@ -1,11 +1,12 @@
 import { Link,  useNavigate } from "react-router-dom";
 import BoilerPlate from "../../Layouts/BoilerPlate";
 
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AuthContext } from "../../Contexts/AuthContexts";
 
 import './SignUp.css';
 import { DefaultButton } from "../../Util/DefaultButton/AllButtons";
+import { ErrorContext } from "../../Contexts/ErrorContexts";
 
 
 const md5 = require('md5');
@@ -14,12 +15,28 @@ const md5 = require('md5');
 const SignUp = () => {
 
     const { setValidateCreateUser, testUserHandler, setUserCreds, setEditAddressType } = useContext(AuthContext);
+
+    const { showNotif } = useContext(ErrorContext);
+
     const navigate = useNavigate();
+
+    useEffect(()=> {
+        if(localStorage.getItem("flashToken") !== null){
+            navigate("/")
+            // showNotif("Error", "Looks like you are logged in already");
+            
+            
+            // return;
+        }// eslint-disable-next-line
+    }, [])
     
     const formSubmitHandler = (event) => {
         event.preventDefault();
         
-        if(document.getElementById("acceptConditions").checked === false){return;}
+        if(document.getElementById("acceptConditions").checked === false){
+            showNotif(`Error`, `Terms should be accepted.`);
+            return;
+        }
 
         const userEmail = event.target[0].value;
         const userFirstName = event.target[1].value;

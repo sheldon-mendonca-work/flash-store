@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import { CartContext } from "../../Contexts/CartContexts";
-import { WishlistContext } from "../../Contexts/WishListContext";
+import { CartContext } from "../../../Contexts/CartContexts";
+import { WishlistContext } from "../../../Contexts/WishListContext";
 import './CartItem.css';
-import { CrossIcon } from "../../Util/Icons";
+import { CrossIcon } from "../../../Util/Icons";
 import { Link } from "react-router-dom";
 
 const CartItem = (props) => {

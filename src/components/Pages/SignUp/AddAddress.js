@@ -10,14 +10,12 @@ const AddAddress = () => {
     const {userAddressList, setUserAddressList, updateAddressHandler, userAddressIndex, addAddressHandler} = useContext(AddressContext);
     
     const [radioValue, setRadioValue] = useState("Home");
-
+    
     
     let addressEdit={}, pageTitleName = "Create New Account", pageTitleSub="Enter a world of limitless knowledge.";
 
     if(userAddressIndex !== -2){
-        console.log(userAddressIndex);
         addressEdit = userAddressList.find(({addressIndex}) => addressIndex === userAddressIndex).address;
-        
     }
         
     const formSubmitHandler = (event, userCreds) => {

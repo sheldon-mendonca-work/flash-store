@@ -1,14 +1,14 @@
 import { useContext } from "react";
-import BoilerPlate from "../../Layouts/BoilerPlate";
-import { CartContext } from "../../Contexts/CartContexts";
-import CartItem from "./CartItem";
-import { AddressContext } from "../../Contexts/AddressContexts";
+import { CartContext } from "../../../Contexts/CartContexts";
+import { AddressContext } from "../../../Contexts/AddressContexts";
 import "./Cart.css";
-import '../UserProfile/UserProfile.css';
-import { DefaultButton } from "../../Util/DefaultButton/AllButtons";
-import { ErrorContext } from "../../Contexts/ErrorContexts";
+import '../../UserProfile/UserProfile.css';
+import { DefaultButton } from "../../../Util/DefaultButton/AllButtons";
+import { ErrorContext } from "../../../Contexts/ErrorContexts";
 import { Link, useNavigate } from "react-router-dom";
-import AddressCard from "./AddressCard";
+import BoilerPlate from "../../../Layouts/BoilerPlate";
+import CartItem from "../CartItem/CartItem";
+import AddressCard from "../Address/AddressCard";
 
 const Cart = () => {
     const { userCart, setUserCart, deleteCartItemHandler } = useContext(CartContext);
@@ -49,11 +49,6 @@ const Cart = () => {
             {cartItemSubtotal !== 0 && 
             <div className="cartContainer">
                 <div className="cartPageLeft">
-                    {/* <div className="cartPageTitles">
-                        <div className="cartTitleLeft">Product</div>
-                        <div className="cartTitleMiddle">Quantity</div>
-                        <div className="cartTitleRight">Price</div>
-                    </div> */}
                     {
                     userCart.map(item => <CartItem key={item._id} item={item}/>)
                     }

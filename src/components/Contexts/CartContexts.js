@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 
 export const CartContext = createContext();
 
-
 export const CartProvider = ({children}) => {
 
     const [ userCart, setUserCart ] = useState([]);
@@ -34,13 +33,12 @@ export const CartProvider = ({children}) => {
 
     const addToCartHandler = async(item) => {
         
-        if(localStorage.getItem("flashToken") === undefined){
+        if(localStorage.getItem("flashToken") === null){
             navigate('/login');
             return;
         }
 
         setIsLoading(true);
-        
         try {
             const response = await fetch("/api/user/cart", {
                 method: "POST",
@@ -99,7 +97,6 @@ export const CartProvider = ({children}) => {
     const updateQtyHandler = async(id, typeName) => {
         
         setIsLoading(true);
-
         try{
             const response = await fetch(`/api/user/cart/${id}`,{
                 method: "POST",
@@ -123,13 +120,6 @@ export const CartProvider = ({children}) => {
             setIsLoading(false);
         }
     }
-
-    // useEffect(()=>{
-        
-    //         getCart();
-            
-    // // eslint-disable-next-line
-    // },[])
 
     return <CartContext.Provider value={{userCart, setUserCart, addToCartHandler, getCart, changeQtyHandler, deleteCartItemHandler, updateQtyHandler}}>
         {children}

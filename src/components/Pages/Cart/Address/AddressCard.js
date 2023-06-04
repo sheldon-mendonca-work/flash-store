@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import "./Cart.css";
-import { AddressContext } from "../../Contexts/AddressContexts";
+import "../Cart/Cart.css";
+import { AddressContext } from "../../../Contexts/AddressContexts";
 
 const AddressCard = (props) => {
     const {address, addressIndex, showAddressRadio = true} = props;

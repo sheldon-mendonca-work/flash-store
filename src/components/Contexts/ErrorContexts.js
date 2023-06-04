@@ -16,16 +16,15 @@ export const ErrorProvider = ({children}) => {
     const [ notif, setNotif ] = useState(initState);
     const [isLoading, setIsLoading] = useState(false);
 
-    const showNotif = async (notifType, notifMsg) => {
+    const showNotif = (notifType, notifMsg) => {
         let errorType = "", errorMsg = "", fillColor = "", backColor = "", svgType = "";
         const notification = document.querySelector(".notification");
         const progress = document.querySelector(".progress");
         const close = document.querySelector(".close");
-
+        
         notification.classList.remove("active");
         progress.classList.remove("active");
-        setNotif(initState);
-
+        
         errorType = notifType;
         errorMsg = notifMsg;
         switch(notifType){
@@ -88,7 +87,7 @@ export const ErrorProvider = ({children}) => {
         setTimeout(()=>{
             notification.classList.remove("active");
             progress.classList.remove("active");
-            setNotif(initState);
+            setTimeout(()=>setNotif(initState), 210);
         }, 2000);
 
         close.addEventListener("click", ()=>{

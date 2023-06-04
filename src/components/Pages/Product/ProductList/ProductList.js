@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import BoilerPlate from "../../Layouts/BoilerPlate";
-import { ProductContext } from "../../Contexts/ProductContexts";
-import ProductItem from './ProductItem';
-import FilterPane from "./FilterPane";
+import { ProductContext } from "../../../Contexts/ProductContexts";
 import styles from './ProductList.module.css';
+import BoilerPlate from "../../../Layouts/BoilerPlate";
+import ProductItem from "../ProductItem/ProductItem";
+import FilterPane from "../FilterPane/FilterPane";
 
 const ProductList = () => {
 

@@ -1,19 +1,19 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import HomePage from "../Pages/HomePage/HomePage";
-import ProductList from "../Pages/ProductList/ProductList";
-import Cart from "../Pages/Cart/Cart";
-import Wishlist from "../Pages/Wishlist/Wishlist";
-import UserProfile from "../Pages/UserProfile/UserProfile";
-import SignUp from "../Pages/SignUp/SignUp";
 import Mockman from "mockman-js";
 import RequiresAuth from "./RequiresAuth";
-import Login from "../Pages/Login/Login";
-import PageNotFound from "../Pages/PageNotFound/PageNotFound";
-import AddAddress from "../Pages/SignUp/AddAddress";
 import { useContext } from "react";
 import { AuthContext } from "../Contexts/AuthContexts";
-import ProductLandscape from "../Pages/ProductList/ProductLandscape";
-import Checkout from "../Pages/Cart/Checkout";
+import HomePage from "../Pages/HomePage/HomePage";
+import ProductList from "../Pages/Product/ProductList/ProductList";
+import ProductLandscape from "../Pages/Product/ProductLandscape/ProductLandscape";
+import PageNotFound from "../Pages/PageNotFound/PageNotFound";
+import Cart from "../Pages/Cart/Cart/Cart";
+import Wishlist from "../Pages/Wishlist/Wishlist";
+import UserProfile from "../Pages/UserProfile/UserProfile";
+import Login from "../Pages/Login/Login";
+import SignUp from "../Pages/SignUp/SignUp";
+import Checkout from "../Pages/Cart/Checkout/Checkout";
+import AddAddress from "../Pages/SignUp/AddAddress";
 
 
 const AllRoutes = () => {

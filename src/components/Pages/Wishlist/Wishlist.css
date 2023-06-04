@@ -23,3 +23,9 @@
         padding: 1rem 0.5rem;
     }
 }
+
+.wishlistContainer{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}

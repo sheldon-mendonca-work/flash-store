@@ -3,8 +3,6 @@ import './Notifications.css';
 import { ErrorContext } from '../../Contexts/ErrorContexts';
 const parse = require('html-react-parser');
 
-
-
 const Notifications = () => {
     const {notif} = useContext(ErrorContext);
 

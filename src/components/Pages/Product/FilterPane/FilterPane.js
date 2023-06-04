@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { ProductContext } from "../../Contexts/ProductContexts";
+import { ProductContext } from "../../../Contexts/ProductContexts";
 import './FilterPane.css';
-import { DefaultButton } from "../../Util/DefaultButton/AllButtons";
+import { DefaultButton } from "../../../Util/DefaultButton/AllButtons";
 
 const FilterPane = (props) => {
 
@@ -43,7 +43,6 @@ const FilterPane = (props) => {
         document.querySelector(".filterBackdrop").style.display = "inline";
         document.querySelectorAll(typeName).forEach(item =>item.style.display = "flex");
 
-        document.querySelectorAll(typeName).forEach(item =>console.log(item.style.display));
     }
 
     const resetFilterCriteriaHandler = () => {
@@ -51,7 +50,7 @@ const FilterPane = (props) => {
         setFilterCriteria(initialFilters);
     }
 
-    return <div className={`filterPane`}>
+    return <><div className={`filterPane`}>
 
         <div className={`filterSet filterCriteriaActive filterSortActive`}>
             <div className={`filterTitle`}>Filters</div>
@@ -130,11 +129,12 @@ const FilterPane = (props) => {
         </div>
 
         <div className={`filterButtonLower`}>
-            <div className="filterBackdrop" onClick={()=>showMinimizedFilter("filterBackdrop")} />
             <DefaultButton onClick={()=>showMinimizedFilter(".filterCriteriaActive")}>Filter</DefaultButton>
             <DefaultButton onClick={()=>showMinimizedFilter(".filterSortActive")}>Sort</DefaultButton>
         </div>
     </div>
+    <div className="filterBackdrop" onClick={()=>showMinimizedFilter("filterBackdrop")} />
+    </>
 }
 
 export default FilterPane;

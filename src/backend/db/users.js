@@ -1,4 +1,4 @@
-import { v4 as uuid } from "uuid";
+// import { v4 as uuid } from "uuid";
 import { formatDate } from "../utils/authUtils";
 /**
  * User Database can be added here.
@@ -7,21 +7,11 @@ import { formatDate } from "../utils/authUtils";
  * */
 
 export const users = [
-  {
-    _id: uuid(),
-    firstName: "Adarsh",
-    lastName: "Balika",
-    email: "adarshbalika@gmail.com",
-    password: "adarshbalika",
-    createdAt: formatDate(),
-    updatedAt: formatDate(),
-  },
+  
   {
     _id: "82c07e0f-e309-4e37-b84b-ea584ae5a7fe",
     email: "testUser@123.com",
-    password: "221068207e125b97beb4e2d062e888b1",
-    createdAt: "2023-06-02T19:37:43+05:30",
-    updatedAt: "2023-06-02T19:37:43+05:30",
+    password: "221068207e125b97beb4e2d062e888b1", //userPassword
     firstName: "Test",
     lastName: "User",
     addressCount: 6,
@@ -94,7 +84,9 @@ export const users = [
         }
     ],
     cart: [],
-    wishlist: []
+    wishlist: [],
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
     }
 ];
 

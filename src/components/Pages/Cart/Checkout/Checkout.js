@@ -1,12 +1,12 @@
 import { useContext } from "react";
-import BoilerPlate from "../../Layouts/BoilerPlate";
-import { AddressContext } from "../../Contexts/AddressContexts";
-import "./Cart.css";
+import BoilerPlate from "../../../Layouts/BoilerPlate";
+import { AddressContext } from "../../../Contexts/AddressContexts";
+import "../Cart/Cart.css";
 import "./Checkout.css";
-import '../UserProfile/UserProfile.css';
-import CartItem from "./CartItem";
+import '../../UserProfile/UserProfile.css';
+import CartItem from "../CartItem/CartItem";
 import { useNavigate } from "react-router-dom";
-import AddressCard from "./AddressCard";
+import AddressCard from "../Address/AddressCard";
 
 const Checkout = () => {
     
@@ -29,11 +29,6 @@ const Checkout = () => {
                 
                 <div className="cartPageLeft">
                     <h2 className="checkoutHeading2">Checkout - <span className={"success"}>Success</span></h2>
-                    {/* <div className="cartPageTitles">
-                        <div className="cartTitleLeft">Product</div>
-                        <div className="cartTitleCenter">Quantity</div>
-                        <div className="cartTitleCenter">Price</div>
-                    </div> */}
                     {
                     checkOutContent.cart.map(item => <CartItem key={item._id} item={item} showUpdateQty={false}/>)
                     }

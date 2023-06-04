@@ -1,9 +1,9 @@
 import { useNavigate, useParams } from "react-router-dom"
-import BoilerPlate from "../../Layouts/BoilerPlate";
+import BoilerPlate from "../../../Layouts/BoilerPlate";
 import { useContext } from "react";
-import { ProductContext } from "../../Contexts/ProductContexts";
-import '../Wishlist/Wishlist.css';
-import SingleProduct from "./SingleProduct";
+import { ProductContext } from "../../../Contexts/ProductContexts";
+import '../../Wishlist/Wishlist.css';
+import SingleProduct from "../SingleItem/SingleProduct";
 
 export default function ProductLandscape(){
 

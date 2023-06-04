@@ -13,8 +13,8 @@ const Header = () => {
 
     const {isLoggedIn, setIsLoggedIn, setValidateCreateUser} = useContext(AuthContext);
 
-    const {userCart} = useContext(CartContext);
-    const {userWishlist} = useContext(WishlistContext);
+    const {userCart, setUserCart} = useContext(CartContext);
+    const {userWishlist, setUserWishlist} = useContext(WishlistContext);
     
     const navigate = useNavigate();
 
@@ -24,6 +24,8 @@ const Header = () => {
         localStorage.removeItem("flashPassword");
         setIsLoggedIn(false);
         setValidateCreateUser(false);
+        setUserCart([]);
+        setUserWishlist([]);
         navigate("/");
     }
 

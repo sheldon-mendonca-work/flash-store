@@ -58,10 +58,19 @@
 .wishListAddIcon{
     height: 2rem;
     fill: #777;
+    transition:  all 0.1s;
+}
+
+.wishListAddIcon:hover{
+    fill: red;
 }
 
 .presentWishlist{
     fill: red;
+}
+
+.presentWishlist:hover{
+    fill: #777;
 }
 
 .removeCartItem{
