@@ -1,8 +1,10 @@
+@import url('../../../Layouts/vars.css');
+
 .cartItemCard{
     display: flex;
     min-height: 20rem;
     position: relative;
-    box-shadow: 0 1rem 1rem rgba(0,0,0,0.5);   
+    box-shadow: 0 1rem 1rem rgba(var(--color-black),0.5);   
     width: 60vw; 
 }
 
@@ -144,8 +146,8 @@
 .cartWishlistBtn{
     padding: 3px;
     background-color: transparent;
-    border: 2px solid #B28451;
-    color: #B28451;
+    border: 2px solid rgb(var(--color-secondary));
+    color: rgb(var(--color-secondary));
     cursor: pointer;
     width: 80%;
     margin-bottom: 5px;

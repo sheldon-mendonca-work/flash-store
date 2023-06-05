@@ -1,3 +1,5 @@
+@import url('./vars.css');
+
 .loaderPage{
     position: fixed;
     left: 0;
@@ -7,7 +9,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: linear-gradient(rgba(0, 0, 0,0.6), rgba(0, 0, 0,0.6));
+    background-image: linear-gradient(rgba(var(--color-black),0.6), rgba(var(--color-black),0.6));
     z-index: 4;
 }
 
@@ -23,7 +25,7 @@
 
 .loaderContent{
     font-size: 3rem;
-    color: #ddd;
+    color: rgb(var(--color-light-1));
     text-transform: uppercase;
     font-weight: bold;
     letter-spacing: 0.3rem;
@@ -51,16 +53,16 @@
 @keyframes loadingAnimation {
     0%{
         transform: rotate(0deg);
-        box-shadow: 0 1rem 1rem #e65c00;
+        box-shadow: 0 1rem 1rem rgb(var(--loading-animation-c1));
     }
 
     50%{
         transform: rotate(180deg);
-        box-shadow: 0 1rem 1rem #18b201;
+        box-shadow: 0 1rem 1rem rgb(var(--loading-animation-c2));
     }
 
     100%{
         transform: rotate(360deg);
-        box-shadow: 0 1rem 1rem #0456c8;
+        box-shadow: 0 1rem 1rem rgb(var(--loading-animation-c3));
     }
 }

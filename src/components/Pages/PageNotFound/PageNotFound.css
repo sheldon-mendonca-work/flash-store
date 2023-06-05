@@ -1,3 +1,5 @@
+@import url('../../Layouts/vars.css');
+
 .notFoundContainer{
     display: flex;
     flex-direction: row;
@@ -69,8 +71,8 @@
 }
 
 .notFoundLink:hover{
-    background-color: #101d2c;
-    color: #fff;
+    background-color: rgb(var(--color-primary));
+    color: rgb(var(--color-white));
     padding: 2px;
     transform: translateY(-2px);
 }

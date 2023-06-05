@@ -83,12 +83,14 @@ export const AuthProvider = ({ children }) => {
           "addressCount": addressCount
         })
         setIsLoggedIn(true);
-        
-        if(location?.pathname !== '/login' && location?.pathname !== undefined){
+
+        if(location?.pathname === '/signup'){
+          navigate('/');
+          showNotif(`Success`, "Successfully logged in.");
+        }else if(location?.pathname !== '/login' && location?.pathname !== undefined){
           navigate(location?.pathname);
-          
-        showNotif(`Success`, "Successfully Auto logged in.");
-        }else if(location?.state?.from?.pathname === "/login" || location?.state?.from?.pathname === undefined){
+         showNotif(`Success`, "Successfully Auto logged in.");
+        }else if(location?.state?.from?.pathname === "/login" || location?.state?.from?.pathname === "/signup"  || location?.state?.from?.pathname === undefined){
           navigate("/");
           showNotif(`Success`, "Successfully logged in.");
         }else{

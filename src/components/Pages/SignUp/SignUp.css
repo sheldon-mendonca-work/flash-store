@@ -1,3 +1,5 @@
+@import url('../../Layouts/vars.css');
+
 .formContainer{
     min-width: 70vw;
     margin: auto;
@@ -61,7 +63,7 @@
     color: inherit;
     padding: 1.5rem 2rem;
     border-radius: 2px;
-    background-color: rbga(#fff, .5);
+    background-color: rbga(var(--color-white), .5);
     border: none;
     border-bottom: 3px solid transparent;
     width: 100%;
@@ -73,7 +75,7 @@
 
 .formGroupInput:focus {
     outline: none;
-    box-shadow: 0 1rem 2rem rgba(#000, .1);
+    box-shadow: 0 1rem 2rem rgba(var(--color-black), .1);
     border-bottom: 3px solid orangered;
 }
 
@@ -87,7 +89,7 @@
 }
 
 .viewPasswordIcon:hover{
-    fill: #B28451;
+    fill: rgb(var(--color-secondary));
 }
 
 .formGroupLabel{
@@ -95,7 +97,7 @@
     font-size: 1.5rem;
     margin-bottom: 1rem;
     display: block;
-    color: #000;
+    color: rgb(var(--color-black));
     font-weight: bold;
     transition: all 0.3s;
 }
@@ -124,16 +126,16 @@
 }
 
 .formContainer button{
-    background-color: #B28451;
+    background-color: rgb(var(--color-secondary));
 }
 
 .acceptConditionsLabel{
     margin-left: 0.5rem;
-    color: #000;
+    color: rgb(var(--color-black));
 }
 
 .acceptConditionsLink{
-    color: #B28451;
+    color: rgb(var(--color-secondary));
 }
 
 .noAccount{

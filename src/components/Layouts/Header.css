@@ -1,3 +1,5 @@
+@import url('../Layouts/vars.css');
+
 .header{
     min-height: 10rem;
     font-size: 1.5rem;
@@ -12,8 +14,8 @@
     top: 0;
     z-index: 4;
     flex-wrap: wrap;
-    background-color: #fff;
-    box-shadow: 0 0.5rem 0.4rem -0.4rem rgba(0,0,0,0.4);
+    background-color: rgb(var(--color-white));
+    box-shadow: 0 0.5rem 0.4rem -0.4rem rgba(var(--color-black),0.4);
 
 }
 
@@ -45,7 +47,7 @@
     font-size: 2rem;
     padding: 0 1.5rem;
     text-decoration: none;
-    color: rgb(16, 29, 44);
+    color: rgb(var(--color-primary));
 }
 
 @media only screen and (max-width: 768px) {
@@ -78,7 +80,7 @@
 
 .flashIcon{
     height: 3.2rem;
-    fill: rgb(16, 29, 44);
+    fill: rgb(var(--color-primary));
 }
 
 @media only screen and (max-width: 500px) {
@@ -126,17 +128,17 @@
 
 .headerNavIcons{
     height: 2.5rem;
-    fill: rgb(16, 29, 44);
+    fill: rgb(var(--color-primary));
     position: relative;
 }
 
 .headerNav > a:hover{
-    background-color: rgb(16, 29, 44);
+    background-color: rgb(var(--color-primary));
 }
 
 .headerNav > a:hover svg{
     fill:#faf9f9;
-    background-color: rgb(16, 29, 44);
+    background-color: rgb(var(--color-primary));
 }
 
 .headerNav > *:active{
@@ -170,8 +172,8 @@
     font-weight: bold;
     border-radius: 50%;
     align-self: start;
-    background-color: rgb(16, 29, 44);
-    color: #fff;
+    background-color: rgb(var(--color-primary));
+    color: rgb(var(--color-white));
     position: absolute;
     top: -70%;
     right: -70%;

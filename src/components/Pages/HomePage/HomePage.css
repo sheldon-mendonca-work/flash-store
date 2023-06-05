@@ -212,6 +212,7 @@
     font-weight: bold;
     width: 80vw;
     color: rgb(var(--color-white));
+    margin-bottom: 2rem;
 }
 
 @media only screen and (max-width: 600px) {
@@ -223,7 +224,7 @@
 .homeCategoryList{
     display: flex;
     justify-content: space-evenly;
-    gap: 2rem;
+    gap: 4rem;
     flex-wrap: wrap;
     list-style: none;
 }
@@ -238,12 +239,10 @@
 .categoryDetailBox{
     background-color: rgba(var(--color-white), 0.4);
     display: flex;
-    width: 70%;
     padding: 2rem;
     left: 0;
     flex-direction: column;
     margin: 0 auto;
-    
 }
 
 @media only screen and (max-width: 1024px) {
@@ -257,4 +256,6 @@
     font-weight: 500;
     color: rgb(var(--color-white));
     margin-bottom: 1rem;
+    
+    min-height: 13rem;
 }

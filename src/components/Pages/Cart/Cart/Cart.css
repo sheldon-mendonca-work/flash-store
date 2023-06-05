@@ -1,3 +1,5 @@
+@import url('../../../Layouts/vars.css');
+
 .cartPage{
     padding: 5rem 8rem;
     font-size: 1.5rem;
@@ -49,8 +51,8 @@
 }
 
 .noCart > a:hover{
-    background-color: #101d2c;
-    color: #fff;
+    background-color: rgb(var(--color-primary));
+    color: rgb(var(--color-white));
     padding: 2px;
     transform: translateY(-2px);
 }

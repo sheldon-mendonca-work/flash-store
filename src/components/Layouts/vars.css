@@ -5,4 +5,12 @@
 
     --color-primary: 16, 29, 44;
     --color-secondary: 178, 132, 81;
+
+    --color-light-1: 221, 221, 221; 
+
+    --loading-animation-c1: 230, 92, 0;
+    --loading-animation-c2: 24, 178, 1;
+    --loading-animation-c3: 4, 86, 200;
+
+    --color-success: 34, 197, 94
 }

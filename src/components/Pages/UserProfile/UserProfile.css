@@ -1,3 +1,5 @@
+@import url('../../Layouts/vars.css');
+
 .userProfile{
     max-width: 120rem;
     padding: 3rem;
@@ -37,7 +39,7 @@
     display: block;
     width: 30%;
     margin: 2rem auto;
-    background-color: #B28451;
+    background-color: rgb(var(--color-secondary));
 }
 
 @media only screen and (max-width: 600px) {
@@ -57,7 +59,7 @@
     background-color: #f9f7f6;
     margin: 2rem 0rem;
     max-width: 40rem;
-    box-shadow: 0 0.5rem 2rem rgba(0,0,0,0.2);
+    box-shadow: 0 0.5rem 2rem rgba(var(--color-black),0.2);
     overflow: hidden;
     padding: 2rem;
     display: flex;
@@ -93,11 +95,11 @@
 
 .addressEditButton > button{
     flex: 1;
-    background-color: #B28451;
+    background-color: rgb(var(--color-secondary));
     padding: 1rem 2rem;
     border-radius: 5px;
-    color: white;
+    color: rgb(var(--color-white));
     font-size: 1.5rem;
     font-weight: bold;
-    border: 2px solid #B28451;
+    border: 2px solid rgb(var(--color-secondary));
 }
