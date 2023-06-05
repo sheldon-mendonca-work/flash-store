@@ -10,7 +10,8 @@ export const ProductProvider = ({children}) => {
     let initialFilters = {
         sortPrice: "none",
         minimumPrice: 10000,
-        categoryCount: 0
+        categoryCount: 0,
+        ratingFilter: 0
     };
 
     let initialProductsData = {};
@@ -41,10 +42,9 @@ export const ProductProvider = ({children}) => {
             });
             if(categoryArrayResponse.status === 200){
                 const receivedCategory = await categoryArrayResponse.json();
-                
-                setCategoryArray(receivedCategory.categories.map(({categoryName}) => categoryName));
+                setCategoryArray(receivedCategory.categories);
 
-                const categories = receivedCategory.categories.reduce((acc, {categoryName}) => ({...acc, [categoryName]: false}), {});
+                const categories = receivedCategory.categories.reduce((acc, category) => ({...acc, [category.categoryTitle]: false}), {});
                 
                 initialFilters = {...initialFilters, ...categories};
 
@@ -57,8 +57,20 @@ export const ProductProvider = ({children}) => {
         }
     }
 
-    return <ProductContext.Provider value={{productList, filterCriteria, setFilterCriteria, categoryArray, initialFilters, getProductList}}>
+    const priceSliderHandler = (minPriceValue) => {
+        setFilterCriteria((prevState) => ({...prevState, minimumPrice: Number(minPriceValue)}))
+    }
+
+    const categoryChangeHandler = (categoryValue) => {
+        setFilterCriteria((prevState) => (
+            {...prevState, 
+            [categoryValue]: !prevState[categoryValue],
+            categoryCount: prevState[categoryValue] ? prevState.categoryCount - 1 : prevState.categoryCount + 1
+            }
+        ))
+    }
+
+    return <ProductContext.Provider value={{productList, filterCriteria, setFilterCriteria, categoryArray, initialFilters, getProductList, priceSliderHandler, categoryChangeHandler}}>
         {children}
     </ProductContext.Provider>
 }
-

@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { ProductContext } from "../../../Contexts/ProductContexts";
 import styles from './ProductList.module.css';
 import BoilerPlate from "../../../Layouts/BoilerPlate";
@@ -6,6 +6,10 @@ import ProductItem from "../ProductItem/ProductItem";
 import FilterPane from "../FilterPane/FilterPane";
 
 const ProductList = () => {
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+      }, [])
 
     const { productList,filterCriteria, categoryArray } = useContext(ProductContext);
         
@@ -18,14 +22,15 @@ const ProductList = () => {
         
         let filteredProducts = structuredClone(productList.products);
         
-        
         if(filterCriteria.categoryCount !== 0){
-            for(let category of categoryArray){
-                if(filterCriteria[category] === true) {
-                    filteredProducts = filteredProducts.filter(({categoryName}) => categoryName === category);
+            for(let {categoryTitle} of categoryArray){
+                if(filterCriteria[categoryTitle] === true) {
+                    filteredProducts = filteredProducts.filter(({categoryName}) => categoryName.indexOf(categoryTitle) !== -1);
                 }
             }
         }
+
+        filteredProducts = filteredProducts.filter(({rating}) => (rating >= filterCriteria.ratingFilter))
 
         switch (filterCriteria.sortPrice) {
             case "sortLowToHigh":
@@ -56,7 +61,7 @@ const ProductList = () => {
             
             {<div className={`${styles.productContents}`}>
                 
-                <h2 className={`${styles.heading2}`}>All Products</h2>
+                <h2 className={`${styles.heading2}`}  autoFocus>All Products</h2>
                 <div className={`${styles.productList}`}>
                 {getProducts()}
                 

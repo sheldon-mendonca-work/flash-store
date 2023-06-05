@@ -3,9 +3,9 @@ import { WishlistContext } from "../../../Contexts/WishListContext";
 import './SingleItem.css';
 import { CartContext } from "../../../Contexts/CartContexts";
 
-const SingleProduct = (props) => {
+const SingleItem = (props) => {
     const {item} = props;
-    const {title, author, price, description, imgLink } = item;
+    const {title, author, price, description, rating, imgLink } = item;
     const { userCart, addToCartHandler, deleteCartItemHandler} = useContext(CartContext);
     const {userWishlist, addToWishlistHandler ,removeWishlistHandler } = useContext(WishlistContext)
 
@@ -20,6 +20,7 @@ const SingleProduct = (props) => {
                 <span className="singleItemTitle">{title}</span>
                 <span className="singleItemAuthor">{author}</span>
                 <span className="singleCatName">{description}</span>
+                <span className="singleRating"><span>{rating} ★</span></span>
             </div>
             <div className="singleItemQty">
                 {   presentInCart ? 
@@ -39,4 +40,4 @@ const SingleProduct = (props) => {
 </div>
 }
 
-export default SingleProduct;
+export default SingleItem;

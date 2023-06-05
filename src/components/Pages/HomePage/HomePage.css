@@ -1,5 +1,7 @@
+@import url('../../Layouts/vars.css');
+
 .homeMain{
-    background-image: linear-gradient(rgba(16, 29, 44, 0.58), rgba(16, 29, 44, 0.58)), url("./images/janko-ferlic-sfL_QOnmy00-unsplash.jpg");
+    background-image: linear-gradient(rgba(var(--color-primary), 0.58), rgba(var(--color-primary), 0.58)), url("./images/janko-ferlic-sfL_QOnmy00-unsplash.jpg");
     min-height: 90vh;
     background-size: cover;
     position: relative;
@@ -12,7 +14,7 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    color: #fff;
+    color: rgb(var(--color-white));
     
 }
 
@@ -62,7 +64,7 @@
 }
 
 .productDetailsLeft{
-    background-image: linear-gradient(rgba(16, 29, 44, 0.5), rgba(16, 29, 44, 0.5)),url("./images/emil-widlund-xrbbXIXAWY0-unsplash.jpg");
+    background-image: linear-gradient(rgba(var(--color-primary), 0.5), rgba(var(--color-primary), 0.5)),url("./images/emil-widlund-xrbbXIXAWY0-unsplash.jpg");
     background-size: cover;
     flex: 0 0 50%;
     margin: 2rem 1rem 2rem 2rem;
@@ -89,7 +91,7 @@
 }
 
 .detailBox{
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(var(--color-white), 0.4);
     display: flex;
     width: 50%;
     padding: 2rem;
@@ -110,7 +112,7 @@
 
 
 .wishlistCard{
-    background-image: linear-gradient(rgba(16, 29, 44, 0.2), rgba(16, 29, 44, 0.2)),url("./images/jaredd-craig-HH4WBGNyltc-unsplash.jpg");
+    background-image: linear-gradient(rgba(var(--color-primary), 0.2), rgba(var(--color-primary), 0.2)),url("./images/jaredd-craig-HH4WBGNyltc-unsplash.jpg");
     background-size: cover;
     background-position: 20% 30%;
     flex: 0 0 50%;
@@ -126,7 +128,7 @@
 }
 
 .userLoginCard{
-    background-image: linear-gradient(rgba(16, 29, 44, 0.2), rgba(16, 29, 44, 0.2)),url("./images/thought-catalog-OJZB0VUQKKc-unsplash.jpg");
+    background-image: linear-gradient(rgba(var(--color-primary), 0.2), rgba(var(--color-primary), 0.2)),url("./images/thought-catalog-OJZB0VUQKKc-unsplash.jpg");
     background-size: cover;
     background-position: 50% 60%;
     flex: 1;
@@ -142,7 +144,7 @@
 }
 
 .productDetailsTitle{
-    color: #000;
+    color: rgb(var(--color-black));
     font-size: 2rem;
     width: 100%;
     font-weight: bold;
@@ -156,20 +158,20 @@
 }
 
 .productDetailDesc{
-    color: #000;
+    color: rgb(var(--color-black));
     font-size: 2rem;
     width: 100%;
 }
 
-.productDetailButton{
+.productDetailButton, .productDetailButton:active{
     font-size: 1.5rem;
     font-weight: 300;
     text-transform: uppercase;
     
     border: none;
-    background-color: #101d2c;
+    background-color: rgb(var(--color-primary));
     font-size: 2rem;
-    color: #fff;
+    color: rgb(var(--color-white));
     cursor: pointer;
     padding: 1.8rem 3rem;
     letter-spacing: 0.1rem;
@@ -182,4 +184,77 @@
     .productDetailButton{
         letter-spacing: 0;
     }
+}
+
+.productDetailButton:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 0.5rem 1rem rgba(var(--color-black),0.3);
+}
+
+.homeCategorySection{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    flex-direction: column;
+    background-image: linear-gradient(rgba(var(--color-primary), 0.6), rgba(var(--color-primary), 0.6)),url("./images/istockphoto-1200326335-612x612.jpg");
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 2rem;
+}
+
+
+.homeCategoryTitle{
+    font-size: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.8rem;
+    display: inline-block;
+    font-weight: bold;
+    width: 80vw;
+    color: rgb(var(--color-white));
+}
+
+@media only screen and (max-width: 600px) {
+    .homeCategoryTitle{
+        font-size: 2rem;
+    }
+  }
+
+.homeCategoryList{
+    display: flex;
+    justify-content: space-evenly;
+    gap: 2rem;
+    flex-wrap: wrap;
+    list-style: none;
+}
+
+.homeCategoryItem{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.categoryDetailBox{
+    background-color: rgba(var(--color-white), 0.4);
+    display: flex;
+    width: 70%;
+    padding: 2rem;
+    left: 0;
+    flex-direction: column;
+    margin: 0 auto;
+    
+}
+
+@media only screen and (max-width: 1024px) {
+    .categoryDetailBox{
+        width: auto;
+    }
+}
+
+.categoryDetailDesc{
+    font-size: 1.7rem;
+    font-weight: 500;
+    color: rgb(var(--color-white));
+    margin-bottom: 1rem;
 }

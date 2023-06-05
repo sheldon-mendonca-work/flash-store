@@ -16,7 +16,7 @@ const Wishlist = () => {
                 userWishlist.length !== 0 && 
                 <div className="wishlistContainer">
                     {
-                        userWishlist.map(item => <ProductItem key={item._id} item={item}/>)
+                        userWishlist.map(item => <ProductItem key={item._id} item={item} fromWishList={true}/>)
                     }
                 </div>
             }

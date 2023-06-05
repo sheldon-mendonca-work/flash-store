@@ -2,15 +2,27 @@ import { Link } from "react-router-dom";
 import BoilerPlate from "../../Layouts/BoilerPlate";
 import "../SignUp/SignUp.css"
 
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../Contexts/AuthContexts";
 import { DefaultButton } from "../../Util/DefaultButton/AllButtons";
+import { NotViewPasswordIcon, ViewPasswordIcon } from "../../Util/Icons";
 const md5 = require('md5');
 
 const Login = () => {
 
     const {loginUserHandler, testUserHandler} = useContext(AuthContext);
     
+    const [showPassword, setShowPassword] = useState({
+        "loginPassword": false,
+    })
+
+    const showPasswordHandler = (passwordID) => {
+        
+        console.log("Here");
+        document.getElementById(passwordID).type = showPassword[passwordID] ? "password" : "text";
+        setShowPassword(prevState => ({...prevState, [passwordID]: !prevState[passwordID]}))
+    }
+
     const formSubmitHandler = (event) => {
         event.preventDefault();
         
@@ -44,8 +56,16 @@ const Login = () => {
 
                     <div className="formGroup">
 
-                        <input className="formGroupInput" type="password" placeholder="Password*" id="userPassword" required/>
-                        <label className="formGroupLabel" htmlFor="userPassword">Password*</label>
+                        <input className="formGroupInput" type="password" placeholder="Password*" id="loginPassword" required/>
+                        <span onClick={()=> showPasswordHandler("loginPassword")}>
+                            {
+                            showPassword["loginPassword"] ?
+                                <NotViewPasswordIcon className={"viewPasswordIcon"} />
+                            :
+                                <ViewPasswordIcon className={"viewPasswordIcon"} />
+                            }
+                        </span>
+                        <label className="formGroupLabel" htmlFor="loginPassword">Password*</label>
                         
                     </div>
 

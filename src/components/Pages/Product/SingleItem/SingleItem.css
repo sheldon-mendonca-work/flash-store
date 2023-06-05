@@ -1,3 +1,5 @@
+@import url('../../../Layouts/vars.css');
+
 .singleItemCard{
     display: flex;
     min-height: 20rem;
@@ -71,6 +73,10 @@
     font-size: 2rem;
 }
 
+.singleItemAuthor{
+    font-style: italic;;
+}
+
 .singleItemQty{
     flex: 1;
     display: flex;
@@ -98,8 +104,8 @@
 .singleWishlistBtn{
     padding: 3px;
     background-color: transparent;
-    border: 2px solid #B28451;
-    color: #B28451;
+    border: 2px solid rgb(var(--color-secondary));
+    color: rgb(var(--color-secondary));
     cursor: pointer;
     width: 80%;
     margin-bottom: 5px;
@@ -111,3 +117,15 @@
     }
 }
 
+.singleRating{
+    text-align: center;
+    
+    margin-top: 3px;
+}
+
+.singleRating > span{
+    background-color: rgb(var(--color-secondary));
+    padding: 2px 7px;
+    color: rgb(var(--color-white));
+    border-radius: 100rem;
+}

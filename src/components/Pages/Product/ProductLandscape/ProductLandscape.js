@@ -3,7 +3,7 @@ import BoilerPlate from "../../../Layouts/BoilerPlate";
 import { useContext } from "react";
 import { ProductContext } from "../../../Contexts/ProductContexts";
 import '../../Wishlist/Wishlist.css';
-import SingleProduct from "../SingleItem/SingleProduct";
+import SingleItem from "../SingleItem/SingleItem";
 
 export default function ProductLandscape(){
 
@@ -20,7 +20,7 @@ export default function ProductLandscape(){
     return <BoilerPlate>
         <div className="wishlistPage">
             <h2 className="heading2">{item.title}</h2>
-            {item.title === "Not found" ? navigate("/error") : <SingleProduct item={item}/>}
+            {item.title === "Not found" ? navigate("/error") : <SingleItem item={item}/>}
         </div>
     </BoilerPlate>
 }

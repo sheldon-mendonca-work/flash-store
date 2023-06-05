@@ -9,20 +9,27 @@ import { Link, useNavigate } from "react-router-dom";
 const defaultImgLink = "./images/STK-20230425-WA0005.jpg";
 
 const ProductItem = (props) => {
-    const {item} = props;
-    const {_id, title, author, price, imgLink} = item;
+    const {item, fromWishList} = props;
+    const {_id, title, author, rating, price, imgLink} = item;
     
-    const { userCart, addToCartHandler, deleteCartItemHandler} = useContext(CartContext); 
+    const { userCart, updateQtyHandler, addToCartHandler, deleteCartItemHandler} = useContext(CartContext); 
     
     const { userWishlist, addToWishlistHandler, removeWishlistHandler } = useContext(WishlistContext)
 
     const navigate = useNavigate();
-
-    const presentInCart = userCart.find(({_id}) => item._id === _id) === undefined ? false : true;
+    const cartPresentItem = userCart.find(({_id}) => item._id === _id);
+    const presentInCart =  cartPresentItem === undefined ? false : true;
 
     const presentInWishList = userWishlist.find(({_id}) => item._id === _id) === undefined ? false : true;
-    
-    const getCartButton = (presentInCart) => {
+    const getCartButton = (presentInCart, fromWishList) => {
+        
+        if(fromWishList === true && presentInCart){
+            return <DefaultButton className={`addCartItem`} onClick={()=>updateQtyHandler(item._id, "increment")}>
+                Increase quantity to {cartPresentItem.qty+1}
+            </DefaultButton>
+            
+        }
+        
         return presentInCart ? 
                     <DefaultButton className={`removeCartItem`} onClick={()=>deleteCartItemHandler(item._id)}>
                         Remove From Cart
@@ -45,16 +52,18 @@ const ProductItem = (props) => {
     }
 
     return (<div className={`productCard`} >
-        
-        <img src= {imgLink ?? defaultImgLink} alt={title} className={`productCardImg`} onClick={()=>navigate(`/product/${_id}`)}/>
-        <div>
+        <div className="productCardImgDiv">
+            <img src= {imgLink ?? defaultImgLink} alt={title} className={`productCardImg`} onClick={()=>navigate(`/product/${_id}`)}/>
+        </div>
+        <div className="productCardContent">
             <span onClick={()=>navigate(`/product/${_id}`)}>
                 <p className={`productCardTitle`}>{title}</p>
         
                 <p className={`productCardAuthor`}>{author}</p>
                 <p className={`productCardPrice`}>&#8377; {price}</p>
+                <p className={`productCardRating`}><span>{rating} ★</span></p>
             </span>
-            { getCartButton(presentInCart) }
+            { getCartButton(presentInCart, fromWishList) }
             { getWishlistButton(presentInWishList) }
         </div>
             

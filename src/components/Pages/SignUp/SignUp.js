@@ -1,12 +1,13 @@
 import { Link,  useNavigate } from "react-router-dom";
 import BoilerPlate from "../../Layouts/BoilerPlate";
 
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Contexts/AuthContexts";
 
 import './SignUp.css';
 import { DefaultButton } from "../../Util/DefaultButton/AllButtons";
 import { ErrorContext } from "../../Contexts/ErrorContexts";
+import { NotViewPasswordIcon, ViewPasswordIcon } from "../../Util/Icons";
 
 
 const md5 = require('md5');
@@ -19,6 +20,17 @@ const SignUp = () => {
     const { showNotif } = useContext(ErrorContext);
 
     const navigate = useNavigate();
+    const [showPassword, setShowPassword] = useState({
+        "userPassword": false,
+        "userConfirmPassword": false
+    })
+
+    const showPasswordHandler = (passwordID) => {
+        
+        console.log("Here");
+        document.getElementById(passwordID).type = showPassword[passwordID] ? "password" : "text";
+        setShowPassword(prevState => ({...prevState, [passwordID]: !prevState[passwordID]}))
+    }
 
     useEffect(()=> {
         if(localStorage.getItem("flashToken") !== null){
@@ -104,6 +116,14 @@ const SignUp = () => {
                 <div className="formGroup">
                     
                     <input className="formGroupInput" type="password" placeholder="Your Password*" id="userPassword" required/>
+                    <span onClick={()=> showPasswordHandler("userPassword")}>
+                        {
+                        showPassword["userPassword"] ?
+                            <NotViewPasswordIcon className={"viewPasswordIcon"} />
+                        :
+                            <ViewPasswordIcon className={"viewPasswordIcon"} />
+                        }
+                    </span>
                     <label className="formGroupLabel" htmlFor="userPassword">Your Password*</label>
 
                 </div>
@@ -111,6 +131,14 @@ const SignUp = () => {
                 <div className="formGroup">
                     
                     <input className="formGroupInput" type="password" placeholder="Confirm Password*" id="userConfirmPassword" required/>
+                    <span onClick={()=> showPasswordHandler("userConfirmPassword")}>
+                        {
+                        showPassword["userConfirmPassword"] ?
+                            <NotViewPasswordIcon className={"viewPasswordIcon"} />
+                        :
+                            <ViewPasswordIcon className={"viewPasswordIcon"} />
+                        }
+                    </span>
                     <label className="formGroupLabel" htmlFor="userConfirmPassword">Confirm Password*</label>
 
                 </div>

@@ -5,24 +5,11 @@ import { DefaultButton } from "../../../Util/DefaultButton/AllButtons";
 
 const FilterPane = (props) => {
 
-    const { filterCriteria, setFilterCriteria, categoryArray, initialFilters } = useContext(ProductContext);
+    const { filterCriteria, setFilterCriteria, categoryArray, initialFilters, priceSliderHandler, categoryChangeHandler } = useContext(ProductContext);
 
 
     const minimumValue = props.minimumValue ?? 0, maximumValue = props.maximumValue ?? 10000, steps =props.steps ?? 2000;
 
-
-    const priceSliderHandler = (minPriceValue) => {
-        setFilterCriteria((prevState) => ({...prevState, minimumPrice: Number(minPriceValue)}))
-    }
-
-    const categoryChangeHandler = (categoryValue) => {
-        setFilterCriteria((prevState) => (
-            {...prevState, 
-            [categoryValue]: !prevState[categoryValue],
-            categoryCount: prevState[categoryValue] ? prevState.categoryCount + 1 : prevState.categoryCount - 1
-            }
-        ))
-    }
 
     const showMinimizedFilter = (typeName) => {
         
@@ -104,7 +91,7 @@ const FilterPane = (props) => {
                     className={`filterRadio`}
                     checked={filterCriteria.sortPrice === "sortHighToLow"} 
                     onChange={()=>setFilterCriteria(prevState => ({...prevState, sortPrice: "sortHighToLow"}))}/>
-                    <label htmlFor="sortHighToLow">Sort Low To High</label>
+                    <label htmlFor="sortHighToLow">Sort High To Low</label>
                 </li>
                 
             </ul>
@@ -113,18 +100,66 @@ const FilterPane = (props) => {
         <div className={`filterContainer  filterCriteriaActive`}>
             <div className={`filterLabel`}>Category</div>
             <ul>{
-                    categoryArray.map(item => <li key={item}>
+                    categoryArray.map(({categoryTitle}) => <li key={categoryTitle}>
                         <input type="checkbox" 
-                            id={item} 
-                            value={item} 
-                            checked={filterCriteria[item] || false} 
+                            id={categoryTitle} 
+                            value={categoryTitle} 
+                            checked={filterCriteria[categoryTitle] || false} 
                             onChange={()=>
-                                categoryChangeHandler(item)
+                                categoryChangeHandler(categoryTitle)
                             }
                             />
-                        <label htmlFor={item}>{item}</label>
+                        <label htmlFor={categoryTitle}>{categoryTitle}</label>
                     </li>)
                 }
+            </ul>
+        </div>
+
+        <div className={`filterContainer filterSortActive`}>
+            <div className={`filterLabel`}>Filter by rating</div>
+            <ul>
+                
+                <li>
+                    <input 
+                    type="radio" 
+                    name="ratingFilter" 
+                    id="FourAbove" 
+                    className={`filterRadio`}
+                    checked={filterCriteria.ratingFilter === 4 }
+                    onChange={()=>setFilterCriteria(prevState => ({...prevState, ratingFilter: 4}))}/>
+                    <label htmlFor="FourAbove">Four Stars and Above</label>
+                </li>
+                <li>
+                    <input 
+                    type="radio" 
+                    name="ratingFilter" 
+                    id="ThreeAbove" 
+                    className={`filterRadio`}
+                    checked={filterCriteria.ratingFilter === 3} 
+                    onChange={()=>setFilterCriteria(prevState => ({...prevState, ratingFilter: 3}))}/>
+                    <label htmlFor="ThreeAbove">Three Stars and Above</label>
+                </li>
+                <li>
+                    <input 
+                    type="radio" 
+                    name="ratingFilter" 
+                    id="TwoAbove" 
+                    className={`filterRadio`}
+                    checked={filterCriteria.ratingFilter === 2 }
+                    onChange={()=>setFilterCriteria(prevState => ({...prevState, ratingFilter: 2}))}/>
+                    <label htmlFor="TwoAbove">Two Stars and Above</label>
+                </li>
+                <li>
+                    <input 
+                    type="radio" 
+                    name="ratingFilter" 
+                    id="OneAbove" 
+                    className={`filterRadio`}
+                    checked={filterCriteria.ratingFilter === 1} 
+                    onChange={()=>setFilterCriteria(prevState => ({...prevState, ratingFilter: 1}))}/>
+                    <label htmlFor="OneAbove">One Star and Above</label>
+                </li>
+                
             </ul>
         </div>
 
