@@ -40,7 +40,7 @@ const Checkout = () => {
                             <span>{checkoutItemQty} {checkoutItemQty > 1 ? "Items": "Item"}</span>
                         </div>
                         <div>
-                            <span>Delivered On</span>
+                            <span>Order placed on</span>
                             <span>{checkOutContent.lastDelivery}</span>
                         </div>
                         <div>
