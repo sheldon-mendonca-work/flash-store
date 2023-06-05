@@ -27,7 +27,6 @@ const SignUp = () => {
 
     const showPasswordHandler = (passwordID) => {
         
-        console.log("Here");
         document.getElementById(passwordID).type = showPassword[passwordID] ? "password" : "text";
         setShowPassword(prevState => ({...prevState, [passwordID]: !prevState[passwordID]}))
     }
@@ -57,7 +56,7 @@ const SignUp = () => {
         const userConfirmPassword = event.target[4].value;
         
         if(userConfirmPassword !== userPassword){
-            console.log("Password do not match");
+            showNotif(`Error`, "Password do not match");
         }else{
             setUserCreds(prevState => ({ ...prevState,
                 email: userEmail,
