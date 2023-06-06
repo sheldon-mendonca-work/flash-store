@@ -37,11 +37,12 @@
 
 .productCardTitle{
     position: absolute;
+    text-transform: uppercase;
     left: 50%;
     bottom: 32%;
     z-index: 1;
     font-size: 1.5rem;
-    background-color: var(--color-primary);
+    background-color: rgb(var(--color-primary));
     color: white;
     font-weight: bold;
     transform: translateX(-50%) translateY(50%);

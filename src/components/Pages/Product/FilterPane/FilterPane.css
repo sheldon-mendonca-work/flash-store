@@ -134,8 +134,6 @@
     align-items: center;
 }
 
-
-
 .filterContainer > ul > li > label{
     color: #282c3f;
     padding: 0.5rem
@@ -176,7 +174,15 @@
     justify-content: space-between;
 }
 
+.filterSliderLabel{
+    text-align: left;
+    font-size: 1.3rem;
+}
 
+.filterSliderLabel > span{
+    font-weight: 600;
+    font-size: 1.6rem;
+}
 
 .filterRadio{
     justify-content: flex-start;

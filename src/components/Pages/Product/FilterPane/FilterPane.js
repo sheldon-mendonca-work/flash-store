@@ -64,6 +64,7 @@ const FilterPane = (props) => {
                     <option value={8000}>8000</option>
                     <option value={10000}>10000</option>
                 </datalist>
+                <div className={`filterSliderLabel`}>Books under  <span>&#8377;{filterCriteria.minimumPrice}</span></div>
             </div>
 
             
