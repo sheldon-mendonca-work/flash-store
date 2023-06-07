@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { ErrorContext } from "./ErrorContexts";
 
 export const AddressContext = createContext();
@@ -12,7 +12,7 @@ export const AddressProvider = ({ children }) => {
   const [checkOutContent, setCheckOutContent] = useState({cart:[], address:[]});
   
   const navigate = useNavigate();
-
+  const location = useLocation();
   const addAddressHandler = async (newAddress) => {
     setIsLoading(true);
     
@@ -26,7 +26,7 @@ export const AddressProvider = ({ children }) => {
 
       if(response.status === 201){
         setUserAddressList(JSON.parse(response._bodyText).addressList.sort((a, b) => (a.addressIndex - b.addressIndex)));
-        navigate("/userProfile");
+        navigate(location?.state ?? "/userProfile");
         showNotif(`Success`, "Successfully added address.");
       }else{
         showNotif(`Issue`, `${response.status}: Issue in adding address.`);

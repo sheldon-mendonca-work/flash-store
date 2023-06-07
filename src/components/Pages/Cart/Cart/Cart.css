@@ -123,3 +123,22 @@
     display: inline-block;
     margin-bottom: 0;
 }
+
+.checkoutHeading3Div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.checkoutHeading3Div > button{
+    text-decoration: underline;
+    background-color: transparent;
+    color: rgb(var(--color-secondary));
+    font-size: inherit;
+    border: none;
+    cursor: pointer;
+}
+
+.checkoutHeading3{
+    display: inline-block;
+}

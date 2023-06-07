@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { CartContext } from "../../../Contexts/CartContexts";
 import { AddressContext } from "../../../Contexts/AddressContexts";
 import "./Cart.css";
@@ -9,9 +9,15 @@ import { Link, useNavigate } from "react-router-dom";
 import BoilerPlate from "../../../Layouts/BoilerPlate";
 import CartItem from "../CartItem/CartItem";
 import AddressCard from "../Address/AddressCard";
+import { AuthContext } from "../../../Contexts/AuthContexts";
 
 const Cart = () => {
+
+    useEffect(()=>{
+        window.scroll(0,0);
+    },[])
     const { userCart, setUserCart, deleteCartItemHandler } = useContext(CartContext);
+    const { setEditAddressType, setValidateCreateUser} = useContext(AuthContext);
     const { userAddressList, userAddressIndex, setUserAddressIndex, setCheckOutContent } = useContext(AddressContext);
     const {showNotif} = useContext(ErrorContext);
     const navigate = useNavigate();
@@ -40,6 +46,13 @@ const Cart = () => {
         setUserAddressIndex(-2);
         showNotif("Success", "Items are ready for delivery.");
         navigate("/checkout");
+    }
+
+    const addNewAddressHandler = () => {
+        setValidateCreateUser(true);
+        setEditAddressType("add");
+        navigate("/signUpAddress", {state: '/cart'});
+        return;
     }
     
     return <BoilerPlate>
@@ -70,8 +83,10 @@ const Cart = () => {
                             <span>&#8377;  {cartItemSubtotal}</span>
                         </div>
                     </div>
-                    <h3 className="checkoutHeading3">Select Address</h3>
-
+                    <div className="checkoutHeading3Div">
+                        <h3 className="checkoutHeading3">Select Address</h3>
+                        <button onClick={addNewAddressHandler}>Add Address</button>
+                    </div>
                     <div className="addressList checkoutAddressList">
                         {userAddressList.map(({address, addressIndex}) => (
                             <AddressCard address={address} addressIndex={addressIndex} key={addressIndex} />

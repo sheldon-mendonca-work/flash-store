@@ -12,7 +12,7 @@ const ProductItem = (props) => {
     const {item, fromWishList} = props;
     const {_id, title, author, rating, price, imgLink} = item;
     
-    const { userCart, updateQtyHandler, addToCartHandler, deleteCartItemHandler} = useContext(CartContext); 
+    const { userCart, updateQtyHandler, addToCartHandler } = useContext(CartContext); 
     
     const { userWishlist, addToWishlistHandler, removeWishlistHandler } = useContext(WishlistContext)
 
@@ -31,8 +31,8 @@ const ProductItem = (props) => {
         }
         
         return presentInCart ? 
-                    <DefaultButton className={`removeCartItem`} onClick={()=>deleteCartItemHandler(item._id)}>
-                        Remove From Cart
+                    <DefaultButton className={`removeCartItem`} onClick={()=>navigate("/cart")}>
+                        Go to Cart
                     </DefaultButton>
             : 
                     <DefaultButton className={`addCartItem`} onClick={()=>addToCartHandler(item)}>

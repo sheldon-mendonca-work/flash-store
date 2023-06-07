@@ -18,7 +18,6 @@ const Login = () => {
 
     const showPasswordHandler = (passwordID) => {
         
-        console.log("Here");
         document.getElementById(passwordID).type = showPassword[passwordID] ? "password" : "text";
         setShowPassword(prevState => ({...prevState, [passwordID]: !prevState[passwordID]}))
     }
