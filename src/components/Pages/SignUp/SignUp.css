@@ -102,7 +102,7 @@
     transition: all 0.3s;
 }
 
-.formGroupInput:placeholder-shown + .formGroupLabel {
+.formGroupInput:placeholder-shown ~ .formGroupLabel {
     opacity: 0;
     visibility: hidden;
     transform: translateY(-4rem);
