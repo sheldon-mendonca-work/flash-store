@@ -11,7 +11,8 @@ const ProductList = () => {
         window.scrollTo(0, 0);
       }, [])
 
-    const { productList,filterCriteria, categoryArray } = useContext(ProductContext);
+    const { productList,filterCriteria } = useContext(ProductContext);
+    // const { categoryArray } = useContext(ProductContext);
         
     const getProducts = () => {
 
@@ -22,12 +23,26 @@ const ProductList = () => {
         
         let filteredProducts = structuredClone(productList.products);
         
+        //AND filtering
+        // if(filterCriteria.categoryCount !== 0){
+        //     for(let {categoryTitle} of categoryArray){
+        //         if(filterCriteria[categoryTitle] === true) {
+        //             filteredProducts = filteredProducts.filter(({categoryName}) => categoryName.indexOf(categoryTitle) !== -1);
+        //         }
+        //     }
+        // }
+
+        //OR filtering
         if(filterCriteria.categoryCount !== 0){
-            for(let {categoryTitle} of categoryArray){
-                if(filterCriteria[categoryTitle] === true) {
-                    filteredProducts = filteredProducts.filter(({categoryName}) => categoryName.indexOf(categoryTitle) !== -1);
+            const newFilterProducts = [];
+            for(let product of filteredProducts){
+                for(let cat of product.categoryName){
+                    if(filterCriteria[cat] === true)
+                    newFilterProducts.push(product);
+                    break;
                 }
             }
+            filteredProducts = structuredClone(newFilterProducts);
         }
 
         filteredProducts = filteredProducts.filter(({rating}) => (rating >= filterCriteria.ratingFilter))
