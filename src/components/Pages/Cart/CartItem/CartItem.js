@@ -19,7 +19,7 @@ const CartItem = (props) => {
             <div className="cartItemDetail">
                 <span className="cartItemTitle">{title}</span>
                 <span className="cartItemAuthor">{author}</span>
-                <span className="cartCatName">{categoryName}</span>
+                <span className="cartCatName">{categoryName.join(',')}</span>
             </div>
             <div className="cartItemQty">
                     <div className="cartQtyChange">

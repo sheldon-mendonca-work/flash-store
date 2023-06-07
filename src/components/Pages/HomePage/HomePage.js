@@ -3,11 +3,12 @@ import BoilerPlate from "../../Layouts/BoilerPlate";
 import './HomePage.css';
 import { ProductContext } from "../../Contexts/ProductContexts";
 import { useContext, useEffect } from "react";
+import { AuthContext } from "../../Contexts/AuthContexts";
 
 const HomePage = () => {
     
     const { categoryChangeHandler, categoryArray, setFilterCriteria, initialFilters } = useContext(ProductContext);
-
+    const {isLoggedIn} = useContext(AuthContext);
     useEffect(()=>{
         window.scrollTo(0, 0);
         setFilterCriteria(initialFilters);// eslint-disable-next-line
@@ -34,7 +35,7 @@ const HomePage = () => {
             <div className={`productDetailsLeft`}>
                 <div className={`detailBox`}>
                     <p className={`productDetailsTitle`}>The Best Books</p>
-                    {/* <p className={`productDetailDesc`}>Over 1000 books from various best sellers delivered right at your <span>doorstep</span></p> */}
+                    <p className={`productDetailDesc`}>Over 1000 books from various best sellers delivered right at your <span>doorstep</span></p>
                     <Link to="/products">
                         <button className={`productDetailButton`}>
                             Collection &rarr;
@@ -46,7 +47,7 @@ const HomePage = () => {
                 <div className={`wishlistCard`}>
                 <div className={`detailBox`}>
                     <p className={`productDetailsTitle`}>Love it? Add it.</p>
-                    {/* <p className={`productDetailDesc`}>Over 1000 books from various best sellers delivered right at your <span>doorstep</span></p> */}
+                    <p className={`productDetailDesc`}>Over 1000 books from various best sellers delivered right at your <span>doorstep</span></p>
                     <Link to="/wishlist">
                         <button className={`productDetailButton`}>
                             Wishlist &rarr;
@@ -57,12 +58,21 @@ const HomePage = () => {
                 <div className={`userLoginCard`}>
                     <div className={`detailBox`}>
                         <p className={`productDetailsTitle`}>Interested?</p>
-                        {/* <p className={`productDetailDesc`}>Over 1000 books from various best sellers delivered right at your <span>doorstep</span></p> */}
-                        <Link to="/login">
-                            <button className={`productDetailButton`}>
-                                Login &rarr;
-                            </button>
-                        </Link>
+                        <p className={`productDetailDesc`}>Over 1000 books from various best sellers delivered right at your <span>doorstep</span></p>
+                        { isLoggedIn ?
+                            <Link to="/cart">
+                                <button className={`productDetailButton`}>
+                                    Cart &rarr;
+                                </button>
+                            </Link>
+                        
+                        :
+                            <Link to="/login">
+                                <button className={`productDetailButton`}>
+                                    Login &rarr;
+                                </button>
+                            </Link>
+                        }
                     </div>
                 </div>
             </div>

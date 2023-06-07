@@ -5,7 +5,7 @@ import { CartContext } from "../../../Contexts/CartContexts";
 
 const SingleItem = (props) => {
     const {item} = props;
-    const {title, author, price, description, rating, imgLink } = item;
+    const {title, author, price, description, rating, categoryName, imgLink } = item;
     const { userCart, addToCartHandler, deleteCartItemHandler} = useContext(CartContext);
     const {userWishlist, addToWishlistHandler ,removeWishlistHandler } = useContext(WishlistContext)
 
@@ -19,7 +19,8 @@ const SingleItem = (props) => {
             <div className="singleItemDetail">
                 <span className="singleItemTitle">{title}</span>
                 <span className="singleItemAuthor">{author}</span>
-                <span className="singleCatName">{description}</span>
+                <span className="singleDesc">{description}</span>
+                <span className="singleCatName">Category: {categoryName.join(',')}</span>
                 <span className="singleRating"><span>{rating} ★</span></span>
             </div>
             <div className="singleItemQty">

@@ -93,7 +93,7 @@
 .detailBox{
     background-color: rgba(var(--color-white), 0.4);
     display: flex;
-    width: 50%;
+    width: 60%;
     padding: 2rem;
     left: 0;
     flex-direction: column;
@@ -158,9 +158,12 @@
 }
 
 .productDetailDesc{
-    color: rgb(var(--color-black));
+    font-family: 'Assistant';
+    background-color: rgba(var(--color-primary),0.6);
+    color: rgb(var(--color-white));
+    font-weight: 400;
     font-size: 2rem;
-    width: 100%;
+    padding: 1rem;
 }
 
 .productDetailButton, .productDetailButton:active{

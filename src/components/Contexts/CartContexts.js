@@ -32,7 +32,6 @@ export const CartProvider = ({children}) => {
     }
 
     const addToCartHandler = async(item) => {
-        
         if(localStorage.getItem("flashToken") === null){
             navigate('/login');
             return;

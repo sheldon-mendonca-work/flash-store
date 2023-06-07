@@ -7,6 +7,7 @@
     box-shadow: 0 1rem 1rem rgba(var(--color-black),0.5);   
     width: 60%;
     margin: 0 auto;
+    font-family: 'Assistant';
 }
 
 @media only screen and (max-width: 1050px) {
@@ -55,6 +56,7 @@
     padding: 3rem 0;
     flex: 2;
     text-align: left;
+    gap: 1rem
 }
 
 @media only screen and (max-width: 768px){
@@ -74,7 +76,12 @@
 }
 
 .singleItemAuthor{
-    font-style: italic;;
+    font-style: italic;
+    font-weight: 500;
+}
+
+.singleCatName{
+    font-style: italic;
 }
 
 .singleItemQty{
