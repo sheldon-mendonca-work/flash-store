@@ -4,6 +4,10 @@ import { ErrorContext } from "./ErrorContexts";
 
 export const AddressContext = createContext();
 
+// export const url = "http://localhost:5000";
+export const url = process.env.BACKEND_URL;
+console.log(process.env)
+
 export const AddressProvider = ({ children }) => {
     
   const [userAddressList, setUserAddressList] = useState([]);
@@ -13,19 +17,24 @@ export const AddressProvider = ({ children }) => {
   
   const navigate = useNavigate();
   const location = useLocation();
+
   const addAddressHandler = async (newAddress) => {
     setIsLoading(true);
     
     try{
 
-      const response = await fetch("/api/user/address", {
+      const response = await fetch(`${url}/api/user/address`, {
         method: "POST",
-        headers: {"authorization": localStorage.getItem("flashToken")},
+        headers: {
+          "Content-Type": "application/json",
+          "authorization": localStorage.getItem("flashToken")
+        },
         body: JSON.stringify({...newAddress})
       })
 
       if(response.status === 201){
-        setUserAddressList(JSON.parse(response._bodyText).addressList.sort((a, b) => (a.addressIndex - b.addressIndex)));
+        const newUserList = await response.json();
+        setUserAddressList(newUserList.addressList.sort((a, b) => (a.addressIndex - b.addressIndex)));
         navigate(location?.state ?? "/userProfile");
         showNotif(`Success`, "Successfully added address.");
       }else{
@@ -48,13 +57,14 @@ export const AddressProvider = ({ children }) => {
 
     try{
       setIsLoading(true);
-      const response = await fetch(`/api/user/address/${id}`,{
+      const response = await fetch(`${url}/api/user/address/${id}`,{
           method: "DELETE",
           headers: {"authorization": localStorage.getItem("flashToken")}
       });
       
       if(response.status === 200){
-          setUserAddressList(JSON.parse(response._bodyText).addressList.sort((a, b) => (a.addressIndex - b.addressIndex) ));
+          const newUserList = await response.json();
+          setUserAddressList(newUserList.addressList.sort((a, b) => (a.addressIndex - b.addressIndex) ));
           showNotif(`Success`, "Successfully deleted address.");
           navigate("/userProfile");
       }else{
@@ -71,14 +81,15 @@ export const AddressProvider = ({ children }) => {
       
     try{
       setIsLoading(true);
-      const response = await fetch(`/api/user/address/${id}`,{
+      const response = await fetch(`${url}/api/user/address/${id}`,{
           method: "POST",
           headers: {authorization: localStorage.getItem("flashToken")},
           body: JSON.stringify({ address: updatedAddress})
       });
 
       if(response.status === 200){
-        setUserAddressList(JSON.parse(response._bodyText).addressList.sort((a, b) => (a.addressIndex - b.addressIndex) ));
+        const newUserList = await response.json();
+        setUserAddressList(newUserList.addressList.sort((a, b) => (a.addressIndex - b.addressIndex) ));
         showNotif(`Success`, "Successfully updated address.");
         navigate("/userProfile");
       }else{

@@ -6,9 +6,8 @@ const RequiresAuth = (props) => {
     const {isLoggedIn} = useContext(AuthContext);
     const location = useLocation();
     const {children} = props;
-
     return <>
-    {isLoggedIn ? children : <Navigate to="/login" state={{from: location}}/>}
+    {isLoggedIn ? children : <Navigate to="/login" state={location.pathname}/>}
     </>
 }
 

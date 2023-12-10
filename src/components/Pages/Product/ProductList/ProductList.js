@@ -16,12 +16,12 @@ const ProductList = () => {
         
     const getProducts = () => {
 
-        if(productList === undefined || productList.products === undefined){
+        if(productList === undefined || productList === undefined){
             return <h3 className={`${styles.heading3}`}>No Products Found</h3>
         }
 
         
-        let filteredProducts = structuredClone(productList.products);
+        let filteredProducts = structuredClone(productList);
         
         //AND filtering
         // if(filterCriteria.categoryCount !== 0){

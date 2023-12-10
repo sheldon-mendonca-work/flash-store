@@ -12,16 +12,17 @@ const SingleItem = (props) => {
     const presentInCart = userCart.find(({_id}) => item._id === _id) === undefined ? false : true;
 
     const presentInWishList = userWishlist.find(({_id}) => item._id === _id) === undefined ? false : true;
+    
 
     return  <div className="singleItemCard">
-        <img src= {imgLink} alt={title} className="singleItemImg" />
+        <img src= {imgLink ?? ""} alt={title ?? ""} className="singleItemImg" />
         <div className="singleItemRight"> 
             <div className="singleItemDetail">
-                <span className="singleItemTitle">{title}</span>
-                <span className="singleItemAuthor">{author}</span>
-                <span className="singleDesc">{description}</span>
-                <span className="singleCatName">Category: {categoryName.join(',')}</span>
-                <span className="singleRating"><span>{rating} ★</span></span>
+                <span className="singleItemTitle">{title ?? ""}</span>
+                <span className="singleItemAuthor">{author ?? ""}</span>
+                <span className="singleDesc">{description ?? ""}</span>
+                <span className="singleCatName">Category: {categoryName?.join(',') ?? ""}</span>
+                <span className="singleRating"><span>{rating ?? ""} ★</span></span>
             </div>
             <div className="singleItemQty">
                 {   presentInCart ? 

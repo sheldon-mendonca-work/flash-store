@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import BoilerPlate from "../../../Layouts/BoilerPlate";
 import { AddressContext } from "../../../Contexts/AddressContexts";
 import "../Cart/Cart.css";
@@ -13,18 +13,22 @@ const Checkout = () => {
     const { checkOutContent } = useContext(AddressContext);
 
     const navigate = useNavigate();
-
-    const {checkoutItemQty, checkoutSubtotal} = checkOutContent.cart.reduce((acc, {qty, price}) => (
+    console.log(checkOutContent)
+    const {checkoutItemQty, checkoutSubtotal} = checkOutContent.cart.reduce((acc, {quantity, price}) => (
         {
-            ...acc, checkoutItemQty: acc.checkoutItemQty + qty, 
-            checkoutSubtotal: acc.checkoutSubtotal + (qty*price)
+            ...acc, checkoutItemQty: acc.checkoutItemQty + quantity, 
+            checkoutSubtotal: acc.checkoutSubtotal + (quantity*price)
         }), {checkoutItemQty: 0, checkoutSubtotal: 0}) ;
 
+    useEffect(()=>{
+        if(checkoutSubtotal === 0){
+            navigate("/products")
+        }// eslint-disable-next-line
+    }, [])
 
     return <BoilerPlate>
         <div className="cartPage">
-            
-            {checkoutSubtotal === 0 && navigate("/products")}
+
             {checkoutItemQty !== 0 && <div className="cartContainer">
                 
                 <div className="cartPageLeft">

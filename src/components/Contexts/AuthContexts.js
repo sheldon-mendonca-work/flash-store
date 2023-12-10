@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { CartContext } from "./CartContexts";
 import { WishlistContext } from "./WishListContext";
-import { AddressContext } from "./AddressContexts";
+import { AddressContext, url } from "./AddressContexts";
 import { ErrorContext } from "./ErrorContexts";
 import { ProductContext } from "./ProductContexts";
 const md5 = require('md5');
@@ -39,31 +39,37 @@ export const AuthProvider = ({ children }) => {
   
   useEffect(()=>{
     
-    getProductList();
-    if(localStorage.getItem("flashToken")){
-        const loginCreds = {
-          email: localStorage.getItem("flashEmail"),
-          password: localStorage.getItem("flashPassword"),
-      } 
-      loginUserHandler(loginCreds);
-    }  
+    async function loadProducts(){
+      await getProductList();
+      if(localStorage.getItem("flashToken")){
+          const loginCreds = {
+            email: localStorage.getItem("flashEmail"),
+            password: localStorage.getItem("flashPassword"),
+        } 
+        loginUserHandler(loginCreds);
+      }  
+    }
+
+    loadProducts();
     // eslint-disable-next-line
   },[])
 
   const loginUserHandler = async (loginCreds) => {
     
     setIsLoading(true);
-
     try {
-      const response = await fetch("/api/auth/login", {
+      const response = await fetch(`${url}/api/auth/login`, {
         method: "POST",
         body: JSON.stringify(loginCreds),
+        headers: {
+          "Content-Type": "application/json",
+        }
       });
-
       
       if (response.status === 200) {
         
-        const responseData = JSON.parse(response._bodyText);
+        const responseData = await response.json();
+        
         const reponseUserData = responseData.foundUser
         
         const {firstName, lastName, email, addressCount} = reponseUserData;
@@ -84,22 +90,13 @@ export const AuthProvider = ({ children }) => {
         })
         setIsLoggedIn(true);
 
-        if(location?.pathname === '/signup'){
+        if(location.state === null){
           navigate('/');
-          showNotif(`Success`, "Successfully logged in.");
-        }else if(location?.pathname !== '/login' && location?.pathname !== undefined){
-          navigate(location?.pathname);
-         showNotif(`Success`, "Successfully Auto logged in.");
-        }else if(location?.state?.from?.pathname === "/login" || location?.state?.from?.pathname === "/signup"  || location?.state?.from?.pathname === undefined){
-          navigate("/");
-          showNotif(`Success`, "Successfully logged in.");
         }else{
-          navigate(location?.state?.from?.pathname);
-          showNotif(`Success`, "Successfully logged in.");
+          navigate(location.state)
         }
       }else{
         showNotif(`Issue`, `${response.status}: Error in logging user.`);
-        console.log(response);
       }
     } catch (error) {
       showNotif(`Error`, `${error.status}: Unable to login user.`);
@@ -112,15 +109,17 @@ export const AuthProvider = ({ children }) => {
     setIsLoading(true);
 
     try {
-      const response = await fetch("/api/auth/signup", {
+      const response = await fetch(`${url}/api/auth/signup`, {
         method: "POST",
         body: JSON.stringify({...createUserCreds, ...createUserAddress}),
+        headers: {
+          "Content-Type": "application/json",
+        }
       });
       
       if(response.status === 201){
-        const responseData = JSON.parse(response._bodyText);
+        const responseData = await response.json();
         
-                
         localStorage.setItem("flashToken", responseData.encodedToken);
         localStorage.setItem("flashEmail", createUserCreds.email);
         localStorage.setItem("flashPassword", createUserCreds.password);

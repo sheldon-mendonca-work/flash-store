@@ -1,8 +1,7 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
-import { makeServer } from "./server";
 import { BrowserRouter as Router } from 'react-router-dom';
 import { CartProvider } from "./components/Contexts/CartContexts";
 import {  ProductProvider } from "./components/Contexts/ProductContexts";
@@ -12,10 +11,11 @@ import { AddressProvider } from "./components/Contexts/AddressContexts";
 import { ErrorProvider } from "./components/Contexts/ErrorContexts";
 
 // Call make Server
-makeServer();
 
-ReactDOM.render(
-  <React.StrictMode>
+const root = ReactDOM.createRoot(
+  document.getElementById('root')
+);
+root.render(
     <Router>
       <ErrorProvider>
         <AddressProvider>
@@ -31,6 +31,4 @@ ReactDOM.render(
         </AddressProvider>
       </ErrorProvider>
     </Router>
-  </React.StrictMode>,
-  document.getElementById("root")
 );

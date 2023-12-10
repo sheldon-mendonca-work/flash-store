@@ -142,3 +142,12 @@
 .checkoutHeading3{
     display: inline-block;
 }
+
+.addressList.checkoutAddressList>.addressCard{
+    width: 100%;
+    max-width: 50rem;
+}
+
+.addressList.checkoutAddressList{
+    justify-content: center;
+}

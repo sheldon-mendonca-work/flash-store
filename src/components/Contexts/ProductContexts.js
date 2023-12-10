@@ -1,5 +1,6 @@
 import { createContext, useContext, useState } from "react";
 import { ErrorContext } from "./ErrorContexts";
+import { url } from "./AddressContexts";
 
 export const ProductContext = createContext();
 
@@ -24,28 +25,32 @@ export const ProductProvider = ({children}) => {
         
         setIsLoading(true);
         try{
-            const productResponse = await fetch("/api/products",{
+            
+            const productResponse = await fetch(`${url}/api/products`,{
                 method: "GET"
             });
+
             
             if(productResponse.status === 200){
                 const receivedProducts = await productResponse.json();
+                initialProductsData = receivedProducts.products;   
                 
-                initialProductsData = receivedProducts;
                 setProductList(initialProductsData);
             }else{
                 showNotif(`Issue`, `${productResponse.status}: Issue in fetching product list response.`);
             }
 
-            const categoryArrayResponse = await fetch("/api/categories",{
+            const categoryArrayResponse = await fetch(`${url}/api/categories`,{
                 method: "GET"
             });
+
             if(categoryArrayResponse.status === 200){
                 const receivedCategory = await categoryArrayResponse.json();
+                
                 setCategoryArray(receivedCategory.categories);
 
                 const categories = receivedCategory.categories.reduce((acc, category) => ({...acc, [category.categoryTitle]: false}), {});
-                
+
                 initialFilters = {...initialFilters, ...categories};
 
                 setFilterCriteria(initialFilters);

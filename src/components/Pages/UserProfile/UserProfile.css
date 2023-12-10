@@ -51,14 +51,15 @@
 .addressList{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .addressCard{
     position: relative;
     background-color: #f9f7f6;
     margin: 2rem 0rem;
-    max-width: 40rem;
+    max-width: 30rem;
+    width: 100%;
     box-shadow: 0 0.5rem 2rem rgba(var(--color-black),0.2);
     overflow: hidden;
     padding: 2rem;

@@ -1,6 +1,7 @@
 import { createContext, useContext, useState } from "react";
 import { ErrorContext } from "./ErrorContexts";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { url } from "./AddressContexts";
 
 export const WishlistContext = createContext();
 
@@ -11,20 +12,26 @@ export const WishlistProvider = ({children}) => {
     const [ userWishlist, setUserWishlist ] = useState([]);
 
     const navigate = useNavigate();
+    const location = useLocation();
 
     const addToWishlistHandler = async (item) => {
         
         if(localStorage.getItem("flashToken") === null){
-            navigate('/login');
-            navigate(0);
+            navigate('/login', {state: location?.pathname});
             return;
         }
-
         setIsLoading(true);
         try {
-            const response = await fetch("/api/user/wishlist", {
+            if(item.productId){
+                item._id = item.productId
+            }
+
+            const response = await fetch(`${url}/api/user/wishlist`, {
                 method: "POST",
-                headers: { "authorization": localStorage.getItem("flashToken")},
+                headers: {
+                    "Content-Type": "application/json",
+                    "authorization": localStorage.getItem("flashToken")
+                  },
                 body: JSON.stringify({product: item})
             })
             
@@ -44,14 +51,16 @@ export const WishlistProvider = ({children}) => {
     const removeWishlistHandler = async (item) => {
 
         if(localStorage.getItem("flashToken") === null){
-            navigate('/login');
-            navigate(0);
+            navigate('/login', {state: location?.pathname});
             return;
         }
         
         setIsLoading(true);
         try {
-            const response = await fetch(`/api/user/wishlist/${item._id}`,{
+            if(item.productId){
+                item._id = item.productId
+            }
+            const response = await fetch(`${url}/api/user/wishlist/${item._id}`,{
                 method: "DELETE",
                 headers: {"authorization": localStorage.getItem("flashToken")}
             });
@@ -73,13 +82,14 @@ export const WishlistProvider = ({children}) => {
 
         setIsLoading(true);
         try{
-            const response = await fetch("/api/user/wishlist",{
+            const response = await fetch(`${url}/api/user/wishlist`,{
                 method: "GET",
                 headers: {"authorization": localStorage.getItem("flashToken")}
             });
 
             if(response.status === 200){
-                setUserWishlist(JSON.parse(response._bodyText).wishlist);
+                const responseData = await response.json();
+                setUserWishlist(responseData.wishlist);
             }else{
                 showNotif(`Issue`, `${response.status}: Issue in fetching wishlist.`);
             }

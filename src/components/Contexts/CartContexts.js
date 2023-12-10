@@ -1,6 +1,7 @@
 import { createContext, useContext, useState } from "react";
 import { ErrorContext } from "./ErrorContexts";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { url } from "./AddressContexts";
 
 export const CartContext = createContext();
 
@@ -9,23 +10,25 @@ export const CartProvider = ({children}) => {
     const [ userCart, setUserCart ] = useState([]);
     const { showNotif, setIsLoading } = useContext(ErrorContext);
     const navigate = useNavigate();
+    const location = useLocation();
 
     const getCart = async () => {
         setIsLoading(true);
 
         try{
-            const response = await fetch("/api/user/cart",{
+            const response = await fetch(`${url}/api/user/cart`,{
                 method: "GET",
                 headers: {"authorization": localStorage.getItem("flashToken")}
             });
 
             if(response.status === 200){
-                setUserCart(JSON.parse(response._bodyText).cart);
+                const responseData = await response.json();
+                setUserCart(responseData.cart);
             }else{
             showNotif(`Issue`, `${response.status}: Issue in fetching cart.`);
             }
         }catch(error){
-            console.log("Error in fetching cart: ", error);
+            showNotif("Error in fetching cart: ", error);
         }finally{
             setIsLoading(false);
         }
@@ -33,15 +36,18 @@ export const CartProvider = ({children}) => {
 
     const addToCartHandler = async(item) => {
         if(localStorage.getItem("flashToken") === null){
-            navigate('/login');
+            navigate('/login', {state: location?.pathname});
             return;
         }
 
         setIsLoading(true);
         try {
-            const response = await fetch("/api/user/cart", {
+            const response = await fetch(`${url}/api/user/cart`, {
                 method: "POST",
-                headers: { "authorization": localStorage.getItem("flashToken")},
+                headers: {
+                    "Content-Type": "application/json",
+                    "authorization": localStorage.getItem("flashToken")
+                  },
                 body: JSON.stringify({product: item})
             })
             
@@ -61,6 +67,7 @@ export const CartProvider = ({children}) => {
     }
 
     const changeQtyHandler = (id, type,qty) => {
+        
         if(type === "decrement" &&  qty === 1){
             deleteCartItemHandler(id);
             
@@ -72,13 +79,17 @@ export const CartProvider = ({children}) => {
     const deleteCartItemHandler = async (id, displayNotif) => {
         setIsLoading(true); 
         try{
-            const response = await fetch(`/api/user/cart/${id}`,{
+            const response = await fetch(`${url}/api/user/cart/${id}`,{
                 method: "DELETE",
-                headers: {"authorization": localStorage.getItem("flashToken")}
+                headers: {
+                    "Content-Type": "application/json",
+                    "authorization": localStorage.getItem("flashToken")
+                },
             });
 
-            if(response.status === 200){
-                setUserCart(JSON.parse(response._bodyText).cart);
+            if(response.status === 201){
+                const responseData = await response.json();
+                setUserCart(responseData.cart);
                 await getCart();
                 if(displayNotif !== false){
                 showNotif(`Success`, "Successfully deleted item from cart.");
@@ -97,9 +108,12 @@ export const CartProvider = ({children}) => {
         
         setIsLoading(true);
         try{
-            const response = await fetch(`/api/user/cart/${id}`,{
+            const response = await fetch(`${url}/api/user/cart/${id}`,{
                 method: "POST",
-                headers: {authorization: localStorage.getItem("flashToken")},
+                headers: {
+                    "Content-Type": "application/json",
+                    "authorization": localStorage.getItem("flashToken")
+                  },
                 body: JSON.stringify({
                     action: {
                       type: typeName
@@ -107,8 +121,9 @@ export const CartProvider = ({children}) => {
                   })
             });
 
-            if(response.status === 200){
-                setUserCart(JSON.parse(response._bodyText).cart);
+            if(response.status === 201){
+                const responseData = await response.json();
+                setUserCart(responseData.cart);
                 showNotif(`Success`, "Successfully updated item qty.");
             }else{
                 showNotif(`Issue`, `${response.status}: Issue in updating item qty.`);

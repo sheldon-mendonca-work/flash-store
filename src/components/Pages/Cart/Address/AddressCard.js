@@ -4,6 +4,7 @@ import { AddressContext } from "../../../Contexts/AddressContexts";
 
 const AddressCard = (props) => {
     const {address, addressIndex, showAddressRadio = true} = props;
+    
     const {addressName, address1, address2, address3, addressType, addressTel } = address;
 
     const { setUserAddressIndex } = useContext(AddressContext);

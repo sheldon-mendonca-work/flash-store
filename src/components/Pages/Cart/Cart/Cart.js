@@ -21,11 +21,11 @@ const Cart = () => {
     const { userAddressList, userAddressIndex, setUserAddressIndex, setCheckOutContent } = useContext(AddressContext);
     const {showNotif} = useContext(ErrorContext);
     const navigate = useNavigate();
-
-    const {cartItemQty, cartItemSubtotal} = userCart.reduce((acc, {qty, price}) => (
+    
+    const {cartItemQty, cartItemSubtotal} = userCart.reduce((acc, {quantity, price}) => (
         {
-            ...acc, cartItemQty: acc.cartItemQty + qty, 
-            cartItemSubtotal: acc.cartItemSubtotal + (qty*price)
+            ...acc, cartItemQty: acc.cartItemQty + quantity, 
+            cartItemSubtotal: acc.cartItemSubtotal + (quantity*price)
         }), {cartItemQty: 0, cartItemSubtotal: 0});
     
     
@@ -37,11 +37,11 @@ const Cart = () => {
 
         setCheckOutContent(({
             cart: userCart,
-            address: userAddressList.find(({addressIndex})=>(addressIndex === userAddressIndex)).address,
+            address: userAddressList.find(({addressIndex})=>(addressIndex === userAddressIndex)),
             lastDelivery: new Date().toLocaleString()
         }))
-
-        userCart.map(index => deleteCartItemHandler(index._id, false));
+        
+        userCart.map(index => deleteCartItemHandler(index.productId, false));
         setUserCart([])
         setUserAddressIndex(-2);
         showNotif("Success", "Items are ready for delivery.");
@@ -88,8 +88,8 @@ const Cart = () => {
                         <button onClick={addNewAddressHandler}>Add Address</button>
                     </div>
                     <div className="addressList checkoutAddressList">
-                        {userAddressList.map(({address, addressIndex}) => (
-                            <AddressCard address={address} addressIndex={addressIndex} key={addressIndex} />
+                        {userAddressList.map((address) => (
+                            <AddressCard address={address} addressIndex={address.addressIndex} key={address.addressIndex} />
                         ))}
                         
                     </div>

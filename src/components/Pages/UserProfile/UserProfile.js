@@ -11,7 +11,7 @@ const UserProfile = () => {
     const {userCreds, setEditAddressType, setValidateCreateUser} = useContext(AuthContext);
     const {email, firstName, lastName} = userCreds;
     const {userAddressList, deleteAddressHandler, setUserAddressIndex} = useContext(AddressContext);
-
+    console.log(userAddressList)
     const navigate = useNavigate();
 
     const editAddressHandler = (addressIndex) => {
@@ -52,9 +52,8 @@ const UserProfile = () => {
         <div >
             <DefaultButton onClick={addNewAddressHandler} className="addressAddButton">Add Address</DefaultButton>
             <div className="addressList">
-                
-                {userAddressList.map(({address, addressIndex}) => (
-                    <div key={addressIndex} className="addressCard">
+                {userAddressList.length > 0 && userAddressList.map((address) => (
+                    <div key={address.addressIndex} className="addressCard">
                         <p className="addressCardTitle">{address.addressName}</p>
                         <p className="addressCardBold">Address:</p>
                         <div>{address.address1}</div>
@@ -63,8 +62,8 @@ const UserProfile = () => {
                         <div ><span className="addressCardBold">Type: </span>{address.addressType}</div>
                         <div ><span className="addressCardBold">Type: </span>{address.addressTel}</div>
                         <div className="addressEditButton">
-                            <button onClick={()=>editAddressHandler(addressIndex)}>Edit</button>
-                            <button onClick={()=>deleteAddressHandler(addressIndex)}>Remove</button>
+                            <button onClick={()=>editAddressHandler(address.addressIndex)}>Edit</button>
+                            <button onClick={()=>deleteAddressHandler(address.addressIndex)}>Remove</button>
                         </div>
                     </div>
                 ))}

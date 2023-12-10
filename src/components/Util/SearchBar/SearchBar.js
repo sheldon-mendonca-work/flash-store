@@ -18,14 +18,13 @@ const SearchBar = (props) => {
             return;
         }
 
-        setDataList(productList.products.filter(({title, author}) => (
+        setDataList(productList.filter(({title, author}) => (
             title.toLowerCase().indexOf(searchText) !== -1 || author.toLowerCase().indexOf(searchText) !== -1 
             )))
         
     }
 
     const clearHandler = () => {
-        console.log("here");
         setDataList([]);
         document.querySelector(".searchInput").value="";
     }
