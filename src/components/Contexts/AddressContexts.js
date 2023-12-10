@@ -5,7 +5,7 @@ import { ErrorContext } from "./ErrorContexts";
 export const AddressContext = createContext();
 
 // export const url = "http://localhost:5000";
-export const url = process.env.BACKEND_URL;
+export const url = process.env.REACT_APP_BACKEND_URL;
 
 export const AddressProvider = ({ children }) => {
     
