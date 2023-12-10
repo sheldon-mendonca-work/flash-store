@@ -18,10 +18,11 @@ const ProductItem = (props) => {
 
     const navigate = useNavigate();
     
-    const cartPresentItem = userCart?.find(({productId}) => item.productId === productId);
+    const cartPresentItem = userCart?.find(({productId}) => item._id === productId || item.productId === productId);
+    
     const presentInCart =  cartPresentItem === undefined ? false : true;
 
-    const presentInWishList = userWishlist?.find(({productId}) => item.productId === productId) === undefined ? false : true;
+    const presentInWishList = userWishlist?.find(({productId}) => item.productId === productId || item._id === productId) === undefined ? false : true;
 
     const getCartButton = (presentInCart, fromWishList) => {
         
