@@ -13,7 +13,6 @@ const Checkout = () => {
     const { checkOutContent } = useContext(AddressContext);
 
     const navigate = useNavigate();
-    console.log(checkOutContent)
     const {checkoutItemQty, checkoutSubtotal} = checkOutContent.cart.reduce((acc, {quantity, price}) => (
         {
             ...acc, checkoutItemQty: acc.checkoutItemQty + quantity, 

@@ -6,7 +6,6 @@ export const AddressContext = createContext();
 
 // export const url = "http://localhost:5000";
 export const url = process.env.BACKEND_URL;
-console.log(process.env)
 
 export const AddressProvider = ({ children }) => {
     

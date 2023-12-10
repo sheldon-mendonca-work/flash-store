@@ -11,7 +11,6 @@ const UserProfile = () => {
     const {userCreds, setEditAddressType, setValidateCreateUser} = useContext(AuthContext);
     const {email, firstName, lastName} = userCreds;
     const {userAddressList, deleteAddressHandler, setUserAddressIndex} = useContext(AddressContext);
-    console.log(userAddressList)
     const navigate = useNavigate();
 
     const editAddressHandler = (addressIndex) => {
